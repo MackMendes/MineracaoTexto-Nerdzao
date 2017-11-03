@@ -174,58 +174,84 @@ $(document).ready(function () {
 
 
 <!-- rnb-text-begin -->
-<div id="instalar-e-carregar-rtweet" class="section level2">
-<h2>Instalar e carregar <code>rtweet</code></h2>
+<div id="instalar-os-pacotes" class="section level2">
+<h2>Instalar os pacotes:</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBpbnN0YWxsLnBhY2thZ2VzKFwicnR3ZWV0XCIpXG5saWJyYXJ5KHJ0d2VldClcbmBgYCJ9 -->
-<pre class="r"><code># install.packages(&quot;rtweet&quot;)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaWYoIXJlcXVpcmUocnR3ZWV0KSkgaW5zdGFsbC5wYWNrYWdlcyhcInJ0d2VldFwiKVxubGlicmFyeShydHdlZXQpXG5gYGAifQ== -->
+<pre class="r"><code>if(!require(rtweet)) install.packages(&quot;rtweet&quot;)
 library(rtweet)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiV2VsY29tZSB0byBydHdlZXQgdjAuNC4wIVxuIn0= -->
-<pre><code>Welcome to rtweet v0.4.0!</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+<div id="rtweet" class="section level5">
+<h5><code>rtweet</code></h5>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaWYoIXJlcXVpcmUoaHR0cHV2KSkgaW5zdGFsbC5wYWNrYWdlcyhcImh0dHB1dlwiKVxubGlicmFyeShodHRwdXYpXG5cbmBgYCJ9 -->
+<pre class="r"><code>if(!require(httpuv)) install.packages(&quot;httpuv&quot;)
+library(httpuv)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="httpuv" class="section level5">
+<h5><code>httpuv</code></h5>
+</div>
 </div>
 <div id="criar-app-no-twitter" class="section level2">
 <h2>Criar app no Twitter</h2>
 <ol style="list-style-type: decimal">
 <li>Acesse <a href="https://apps.twitter.com" class="uri">https://apps.twitter.com</a> e crie um novo aplicativo.</li>
+<li>A fim demostração, no campo <code>Website</code> colocarmos a URL do nosso perfil do Twitter.<br />
+</li>
 <li>No campo <code>Callback URL</code> preencher com: <a href="http://127.0.0.1:1410" class="uri">http://127.0.0.1:1410</a></li>
 <li>Aceite os termos e clique em “Create your Twitter application”.</li>
 <li>Vá em “Keys and Access Tokens” e anote os valores dos campos <code>Consumer Key</code>, <code>Consumer Secret</code>. Eles serão utilizados para autenticação na próxima seção.</li>
 </ol>
+<ul>
+<li>(Ob.: Pode ser que o Twitter peça para incluir o número do seu celular, antes de criar o seu aplicativo. Só seguir as instruções: <a href="https://support.twitter.com/articles/270426" class="uri">https://support.twitter.com/articles/270426</a>.)</li>
+</ul>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyMgTm9tZSBkbyBzZXUgYXBsaWNhdGl2b1xuYXBwbmFtZSA8LSBcIm5lcmR6YW9cIlxuIyMgQ29uc3VtZXIgS2V5IChBUEkgS2V5KVxua2V5IDwtIFwiMjlsSk1Mb2R3bmtNTk82Z3VVNDM1QjVLMVwiXG4jIyBDb25zdW1lciBTZWNyZXQgKEFQSSBTZWNyZXQpXG5zZWNyZXQgPC0gXCI2SUlqdER5YUZmdERaYzZFNThsN21ab2pFbVRKV25JUU0yY2RyQTYySUNGWDZaZlJCbVwiXG4jIyBDcmlhciB0b2tlbiBwYXJhIG8gYXBwXG50d2l0dGVyX3Rva2VuIDwtIGNyZWF0ZV90b2tlbihhcHAgPSBhcHBuYW1lLCBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNvbnN1bWVyX2tleSA9IGtleSwgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjb25zdW1lcl9zZWNyZXQgPSBzZWNyZXQpXG5gYGAifQ== -->
-<pre class="r"><code>## Nome do seu aplicativo
-appname &lt;- &quot;nerdzao&quot;
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyMgTm9tZSBkbyBzZXUgYXBsaWNhdGl2byAobyBtZXNtbyBjcmlhZG8gbmEgZXRhcGEgYW50ZXJpb3IpXG5ub21lQXBsaWNhdGl2byA8LSBcIm5lcmR6YW9cIiBcblxuIyMgQ29uc3VtZXIgS2V5IChBUEkgS2V5KVxuY2hhdmVBUEkgPC0gXCIyOWxKTUxvZHdua01OTzZndVU0MzVCNUsxXCJcblxuIyMgQ29uc3VtZXIgU2VjcmV0IChBUEkgU2VjcmV0KVxuY2hhdmVTZWNyZXRhIDwtIFwiNklJanREeWFGZnREWmM2RTU4bDdtWm9qRW1USlduSVFNMmNkckE2MklDRlg2WmZSQm1cIlxuXG4jIyBDcmlhciB0b2tlbiBwYXJhIG8gYXBwXG50d2l0dGVyX3Rva2VuIDwtIGNyZWF0ZV90b2tlbihhcHAgPSBub21lQXBsaWNhdGl2bywgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjb25zdW1lcl9rZXkgPSBjaGF2ZUFQSSwgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjb25zdW1lcl9zZWNyZXQgPSBjaGF2ZVNlY3JldGEpXG5gYGAifQ== -->
+<pre class="r"><code>## Nome do seu aplicativo (o mesmo criado na etapa anterior)
+nomeAplicativo &lt;- &quot;nerdzao&quot; 
+
 ## Consumer Key (API Key)
-key &lt;- &quot;29lJMLodwnkMNO6guU435B5K1&quot;
+chaveAPI &lt;- &quot;29lJMLodwnkMNO6guU435B5K1&quot;
+
 ## Consumer Secret (API Secret)
-secret &lt;- &quot;6IIjtDyaFftDZc6E58l7mZojEmTJWnIQM2cdrA62ICFX6ZfRBm&quot;
+chaveSecreta &lt;- &quot;6IIjtDyaFftDZc6E58l7mZojEmTJWnIQM2cdrA62ICFX6ZfRBm&quot;
+
 ## Criar token para o app
-twitter_token &lt;- create_token(app = appname, 
-                              consumer_key = key, 
-                              consumer_secret = secret)</code></pre>
+twitter_token &lt;- create_token(app = nomeAplicativo, 
+                              consumer_key = chaveAPI, 
+                              consumer_secret = chaveSecreta)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
 <div id="coleta-de-dados" class="section level2">
 <h2>Coleta de dados</h2>
-<p>Vamos coletar dados dos 4 grandes clubes paulistas: Corinthians, Palmeiras, Santos, São Paulo.</p>
+<p>Vamos coletar dados dos 4 grandes clubes paulistas: Corinthians, Palmeiras, Santos e São Paulo.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2F2ZShydCwgXCJ0d2VldHNfY2x1YmVzLlJEYXRhXCIpXG5cbmBgYCJ9 -->
-<pre class="r"><code>save(rt, &quot;tweets_clubes.RData&quot;)
-</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBEZWZpbmUgbGlzdGEgZGUgY2x1YmVzIGRvcyBxdWFpcyBxdWVyZW1vcyBleHRyYWlyIHR3ZWV0c1xuY2x1YmVzIDwtIGMoXCJAQ29yaW50aGlhbnNcIiwgXCJAUGFsbWVpcmFzXCIsIFwiQFNhbnRvc0ZDXCIsIFwiQFNhb1BhdWxvRkNcIilcblxuIyBFeHRyYWkgMjAwIHR3ZWV0cyBxdWUgbWVuY2lvbmEgY2FkYSBjbHViZSBlc3BlY2lmaWNhZG9cbnJ0IDwtIGxhcHBseShjbHViZXMsIHNlYXJjaF90d2VldHMsIG4gPSAyMDAsIHRva2VuID0gdHdpdHRlcl90b2tlbilcbnR3X3NjY3AgPC0gcnRbMV1cbnR3X3NlcCAgPC0gcnRbMl1cbnR3X3NmYyAgPC0gcnRbM11cbnR3X3NwZmMgPC0gcnRbNF1cblxuIyBTYWx2YXIgcGFyYSB1c28gcG9zdGVyaW9yXG5zYXZlKHJ0LCBmaWxlID0gXCJ0d2VldHNfY2x1YmVzLlJEYXRhXCIpXG5gYGAifQ== -->
+<pre class="r"><code># Define lista de clubes dos quais queremos extrair tweets
+clubes &lt;- c(&quot;@Corinthians&quot;, &quot;@Palmeiras&quot;, &quot;@SantosFC&quot;, &quot;@SaoPauloFC&quot;)
+
+# Extrai 200 tweets que menciona cada clube especificado
+rt &lt;- lapply(clubes, search_tweets, n = 200, token = twitter_token)
+tw_sccp &lt;- rt[1]
+tw_sep  &lt;- rt[2]
+tw_sfc  &lt;- rt[3]
+tw_spfc &lt;- rt[4]
+
+# Salvar para uso posterior
+save(rt, file = &quot;tweets_clubes.RData&quot;)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gc2F2ZShydCwgXCJ0d2VldHNfY2x1YmVzLlJEYXRhXCIpIDogXG4gIG9iamVjdCDigJh0d2VldHNfY2x1YmVzLlJEYXRh4oCZIG5vdCBmb3VuZFxuIn0= -->
-<pre><code>Error in save(rt, &quot;tweets_clubes.RData&quot;) : 
-  object tweets_clubes.RData not found</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
@@ -238,7 +264,7 @@ twitter_token &lt;- create_token(app = appname,
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCmF1dGhvcjogIkFuZHJlaSBNYXJ0aW5zIGUgQ2hhcmxlcyBNZW5kZXMiDQotLS0NCg0KIyMgSW5zdGFsYXIgZSBjYXJyZWdhciBgcnR3ZWV0YA0KDQpgYGB7cn0NCiMgaW5zdGFsbC5wYWNrYWdlcygicnR3ZWV0IikNCmxpYnJhcnkocnR3ZWV0KQ0KYGBgDQoNCiMjIENyaWFyIGFwcCBubyBUd2l0dGVyDQoNCjEpIEFjZXNzZSBodHRwczovL2FwcHMudHdpdHRlci5jb20gZSBjcmllIHVtIG5vdm8gYXBsaWNhdGl2by4NCjIpIE5vIGNhbXBvIGBDYWxsYmFjayBVUkxgIHByZWVuY2hlciBjb206IGh0dHA6Ly8xMjcuMC4wLjE6MTQxMA0KMykgQWNlaXRlIG9zIHRlcm1vcyBlIGNsaXF1ZSBlbSAiQ3JlYXRlIHlvdXIgVHdpdHRlciBhcHBsaWNhdGlvbiIuDQo0KSBW4SBlbSAiS2V5cyBhbmQgQWNjZXNzIFRva2VucyIgZSBhbm90ZSBvcyB2YWxvcmVzIGRvcyBjYW1wb3MgYENvbnN1bWVyIEtleWAsIGBDb25zdW1lciBTZWNyZXRgLiBFbGVzIHNlcuNvIHV0aWxpemFkb3MgcGFyYSBhdXRlbnRpY2Hn428gbmEgcHLzeGltYSBzZefjby4NCg0KYGBge3J9DQojIyBOb21lIGRvIHNldSBhcGxpY2F0aXZvDQphcHBuYW1lIDwtICJuZXJkemFvIg0KDQojIyBDb25zdW1lciBLZXkgKEFQSSBLZXkpDQprZXkgPC0gIjI5bEpNTG9kd25rTU5PNmd1VTQzNUI1SzEiDQoNCiMjIENvbnN1bWVyIFNlY3JldCAoQVBJIFNlY3JldCkNCnNlY3JldCA8LSAiNklJanREeWFGZnREWmM2RTU4bDdtWm9qRW1USlduSVFNMmNkckE2MklDRlg2WmZSQm0iDQoNCiMjIENyaWFyIHRva2VuIHBhcmEgbyBhcHANCnR3aXR0ZXJfdG9rZW4gPC0gY3JlYXRlX3Rva2VuKGFwcCA9IGFwcG5hbWUsIA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY29uc3VtZXJfa2V5ID0ga2V5LCANCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNvbnN1bWVyX3NlY3JldCA9IHNlY3JldCkNCmBgYA0KDQojIyBDb2xldGEgZGUgZGFkb3MNCg0KVmFtb3MgY29sZXRhciBkYWRvcyBkb3MgNCBncmFuZGVzIGNsdWJlcyBwYXVsaXN0YXM6IENvcmludGhpYW5zLCBQYWxtZWlyYXMsIFNhbnRvcywgU+NvIFBhdWxvLg0KYGBge3IsIG1lc3NhZ2U9RkFMU0V9DQojIERlZmluZSBsaXN0YSBkZSBjbHViZXMgZG9zIHF1YWlzIHF1ZXJlbW9zIGV4dHJhaXIgdHdlZXRzDQpjbHViZXMgPC0gYygiQENvcmludGhpYW5zIiwgIkBQYWxtZWlyYXMiLCAiQFNhbnRvc0ZDIiwgIkBTYW9QYXVsb0ZDIikNCg0KIyBFeHRyYWkgMjAwIHR3ZWV0cyBxdWUgbWVuY2lvbmEgY2FkYSBjbHViZSBlc3BlY2lmaWNhZG8NCnJ0IDwtIGxhcHBseShjbHViZXMsIHNlYXJjaF90d2VldHMsIG4gPSAyMDAsIHRva2VuID0gdHdpdHRlcl90b2tlbikNCnR3X3NjY3AgPC0gcnRbMV0NCnR3X3NlcCAgPC0gcnRbMl0NCnR3X3NmYyAgPC0gcnRbM10NCnR3X3NwZmMgPC0gcnRbNF0NCg0KIyBTYWx2YXIgcGFyYSB1c28gcG9zdGVyaW9yDQpzYXZlKHJ0LCBmaWxlID0gInR3ZWV0c19jbHViZXMuUkRhdGEiKQ0KYGBgDQoNCiMjIFJlZmVy6m5jaWFzDQoNCi0gW0NsaWVudGUgUiBwYXJhIEFQSSBkbyBUd2l0dGVyXShodHRwczovL2dpdGh1Yi5jb20vbWtlYXJuZXkvcnR3ZWV0KQ0KLSBbVGV4dCBNaW5pbmcgV2l0aCBSXShodHRwOi8vdGlkeXRleHRtaW5pbmcuY29tLyk=</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCmF1dGhvcjogIkFuZHJlaSBNYXJ0aW5zIGUgQ2hhcmxlcyBNZW5kZXMiDQotLS0NCg0KIyMgSW5zdGFsYXIgb3MgcGFjb3RlczoNCg0KYGBge3J9DQppZighcmVxdWlyZShydHdlZXQpKSBpbnN0YWxsLnBhY2thZ2VzKCJydHdlZXQiKQ0KbGlicmFyeShydHdlZXQpDQpgYGANCiMjIyMjIGBydHdlZXRgDQoNCg0KYGBge3J9DQppZighcmVxdWlyZShodHRwdXYpKSBpbnN0YWxsLnBhY2thZ2VzKCJodHRwdXYiKQ0KbGlicmFyeShodHRwdXYpDQoNCmBgYA0KIyMjIyMgYGh0dHB1dmANCg0KDQojIyBDcmlhciBhcHAgbm8gVHdpdHRlcg0KDQoxKSBBY2Vzc2UgaHR0cHM6Ly9hcHBzLnR3aXR0ZXIuY29tIGUgY3JpZSB1bSBub3ZvIGFwbGljYXRpdm8uDQoyKSBBIGZpbSBkZW1vc3RyYefjbywgbm8gY2FtcG8gYFdlYnNpdGVgIGNvbG9jYXJtb3MgYSBVUkwgZG8gbm9zc28gcGVyZmlsIGRvIFR3aXR0ZXIuICANCjMpIE5vIGNhbXBvIGBDYWxsYmFjayBVUkxgIHByZWVuY2hlciBjb206IGh0dHA6Ly8xMjcuMC4wLjE6MTQxMA0KNCkgQWNlaXRlIG9zIHRlcm1vcyBlIGNsaXF1ZSBlbSAiQ3JlYXRlIHlvdXIgVHdpdHRlciBhcHBsaWNhdGlvbiIuDQo1KSBW4SBlbSAiS2V5cyBhbmQgQWNjZXNzIFRva2VucyIgZSBhbm90ZSBvcyB2YWxvcmVzIGRvcyBjYW1wb3MgYENvbnN1bWVyIEtleWAsIGBDb25zdW1lciBTZWNyZXRgLiBFbGVzIHNlcuNvIHV0aWxpemFkb3MgcGFyYSBhdXRlbnRpY2Hn428gbmEgcHLzeGltYSBzZefjby4NCg0KKiAoT2IuOiBQb2RlIHNlciBxdWUgbyBUd2l0dGVyIHBl52EgcGFyYSBpbmNsdWlyIG8gbvptZXJvIGRvIHNldSBjZWx1bGFyLCBhbnRlcyBkZSBjcmlhciBvIHNldSBhcGxpY2F0aXZvLiBT8yBzZWd1aXIgYXMgaW5zdHJ15/VlczogaHR0cHM6Ly9zdXBwb3J0LnR3aXR0ZXIuY29tL2FydGljbGVzLzI3MDQyNi4pDQoNCmBgYHtyfQ0KIyMgTm9tZSBkbyBzZXUgYXBsaWNhdGl2byAobyBtZXNtbyBjcmlhZG8gbmEgZXRhcGEgYW50ZXJpb3IpDQpub21lQXBsaWNhdGl2byA8LSAibmVyZHphbyIgDQoNCiMjIENvbnN1bWVyIEtleSAoQVBJIEtleSkNCmNoYXZlQVBJIDwtICIyOWxKTUxvZHdua01OTzZndVU0MzVCNUsxIg0KDQojIyBDb25zdW1lciBTZWNyZXQgKEFQSSBTZWNyZXQpDQpjaGF2ZVNlY3JldGEgPC0gIjZJSWp0RHlhRmZ0RFpjNkU1OGw3bVpvakVtVEpXbklRTTJjZHJBNjJJQ0ZYNlpmUkJtIg0KDQojIyBDcmlhciB0b2tlbiBwYXJhIG8gYXBwDQp0d2l0dGVyX3Rva2VuIDwtIGNyZWF0ZV90b2tlbihhcHAgPSBub21lQXBsaWNhdGl2bywgDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjb25zdW1lcl9rZXkgPSBjaGF2ZUFQSSwgDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjb25zdW1lcl9zZWNyZXQgPSBjaGF2ZVNlY3JldGEpDQpgYGANCg0KIyMgQ29sZXRhIGRlIGRhZG9zDQoNClZhbW9zIGNvbGV0YXIgZGFkb3MgZG9zIDQgZ3JhbmRlcyBjbHViZXMgcGF1bGlzdGFzOiBDb3JpbnRoaWFucywgUGFsbWVpcmFzLCBTYW50b3MgZSBT428gUGF1bG8uDQpgYGB7ciwgbWVzc2FnZT1GQUxTRX0NCiMgRGVmaW5lIGxpc3RhIGRlIGNsdWJlcyBkb3MgcXVhaXMgcXVlcmVtb3MgZXh0cmFpciB0d2VldHMNCmNsdWJlcyA8LSBjKCJAQ29yaW50aGlhbnMiLCAiQFBhbG1laXJhcyIsICJAU2FudG9zRkMiLCAiQFNhb1BhdWxvRkMiKQ0KDQojIEV4dHJhaSAyMDAgdHdlZXRzIHF1ZSBtZW5jaW9uYSBjYWRhIGNsdWJlIGVzcGVjaWZpY2Fkbw0KcnQgPC0gbGFwcGx5KGNsdWJlcywgc2VhcmNoX3R3ZWV0cywgbiA9IDIwMCwgdG9rZW4gPSB0d2l0dGVyX3Rva2VuKQ0KdHdfc2NjcCA8LSBydFsxXQ0KdHdfc2VwICA8LSBydFsyXQ0KdHdfc2ZjICA8LSBydFszXQ0KdHdfc3BmYyA8LSBydFs0XQ0KDQojIFNhbHZhciBwYXJhIHVzbyBwb3N0ZXJpb3INCnNhdmUocnQsIGZpbGUgPSAidHdlZXRzX2NsdWJlcy5SRGF0YSIpDQpgYGANCg0KIyMgUmVmZXLqbmNpYXMNCg0KLSBbQ2xpZW50ZSBSIHBhcmEgQVBJIGRvIFR3aXR0ZXJdKGh0dHBzOi8vZ2l0aHViLmNvbS9ta2Vhcm5leS9ydHdlZXQpDQotIFtUZXh0IE1pbmluZyBXaXRoIFJdKGh0dHA6Ly90aWR5dGV4dG1pbmluZy5jb20vKQ==</div>
 
 
 
