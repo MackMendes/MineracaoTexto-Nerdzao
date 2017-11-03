@@ -67,7 +67,7 @@ clubes <- c("@Corinthians", "@Palmeiras", "@SantosFC", "@SaoPauloFC")
 # save(rt, file = "tweets_clubes.RData")
 load("tweets_clubes.RData")
 
-tw_sccp <- rt[1]
+tw_sccp <- rt[1]  
 tw_sep  <- rt[2]
 tw_sfc  <- rt[3]
 tw_spfc <- rt[4]
@@ -132,6 +132,57 @@ sentimento_sccp %>%
        x = NULL) +
   coord_flip()
 ```
+
+
+
+
+## Calculando a frequência das palavras (tf)
+
+
+Vamos calcular a frequência das palavras 
+
+```{r}
+
+tw_tf_sccp <- tw_sccp[[1]] %>%
+  select(created_at, text) %>%
+  mutate(clube = "corinthians")
+tw_tf_sccp <- tw_tf_sccp[,c(3,2,1)]
+
+
+tw_tf_sccp <- tw_tf_sccp %>%
+  unnest_tokens(term, text) %>%
+  count(created_at, term, sort = TRUE) %>%
+  ungroup()
+
+
+
+total_tw_tf_sccp <- tw_tf_sccp %>% 
+  group_by(created_at) %>% 
+  summarize(total = sum(n))
+
+
+tw_tf_sccp <- left_join(tw_tf_sccp, total_tw_tf_sccp)
+
+tw_tf_sccp
+
+```
+
+
+
+
+
+
+
+## Calculando a idf
+
+
+
+
+
+## Calculando o tf-idf
+
+
+
 
 ## Referências
 
