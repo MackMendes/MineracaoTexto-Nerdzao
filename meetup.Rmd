@@ -7,8 +7,17 @@ author: "Andrei Martins e Charles Mendes"
 ## Instalar e carregar `rtweet`
 
 ```{r}
+# install.packages("dplyr")
+# install.packages("lexiconPT")
 # install.packages("rtweet")
-library(rtweet)
+# install.packages("tidytext")
+# install.packages("ggplot2")
+
+library(dplyr)     # Manipulação de dados
+library(lexiconPT) # Dicionário para análise de sentimento
+library(rtweet)    # Cliente para Twitter Search API
+library(tidytext)  # Mineração de textos
+library(ggplot2)   # Visualização de dados
 ```
 
 ## Criar app no Twitter
@@ -42,14 +51,76 @@ Vamos coletar dados dos 4 grandes clubes paulistas: Corinthians, Palmeiras, Sant
 clubes <- c("@Corinthians", "@Palmeiras", "@SantosFC", "@SaoPauloFC")
 
 # Extrai 200 tweets que menciona cada clube especificado
-rt <- lapply(clubes, search_tweets, n = 200, token = twitter_token)
+# rt <- lapply(clubes, search_tweets, n = 200, token = twitter_token)
+
+# Salvar para uso posterior
+# save(rt, file = "tweets_clubes.RData")
+load("tweets_clubes.RData")
+
 tw_sccp <- rt[1]
 tw_sep  <- rt[2]
 tw_sfc  <- rt[3]
 tw_spfc <- rt[4]
+```
 
-# Salvar para uso posterior
-save(rt, file = "tweets_clubes.RData")
+## Análise de Sentimento
+
+Cada palavra carrega consigo um sentimento que pode ser bom (1), neutro (0) ou ruim (-1). 
+Vamos ver o sentimento transmitidos por algumas palavras.
+```{r}
+dicio <- oplexicon_v3.0 # Carrega dicionário de sentimentos
+
+# Sentimento transmitido pela palavra "inteligente"
+dicio %>%
+  filter(term == "inteligente") %>%
+  select(term, polarity)
+
+# Sentimento transmitido pela palavra "academico"
+dicio %>%
+  filter(term == "academico") %>%
+  select(term, polarity)
+
+# Sentimento transmitido pela palavra "lento"
+dicio %>%
+  filter(term == "lento") %>%
+  select(term, polarity)
+```
+
+### Seleção de informações
+
+Na estrutura de dados abaixo, cada linha é um *tweet*. Cada coluna representa 
+um atributo do *tweet*, como `id do usuário`, `data de criação`, entre outros.
+
+Mas nós só temos interesse em minerar os textos, então vamos manter apenas os
+atributos `data de criação`, `text` e `hashtags`.
+```{r}
+df_sccp <- tw_sccp[[1]] %>%
+  select(created_at, text) %>%
+  mutate(clube = "corinthians")
+df_sccp <- df_sccp[,c(3,2,1)]
+
+tokens_sccp <- df_sccp %>%
+  unnest_tokens(term, text)
+
+tokens_sccp
+dicio
+
+sentimento_sccp <- tokens_sccp %>%
+  inner_join(dicio) %>%
+  count(term, polarity, sort = TRUE) %>%
+  ungroup()
+
+sentimento_sccp %>%
+  group_by(polarity) %>%
+  top_n(10) %>%
+  ungroup() %>%
+  mutate(term = reorder(term, n)) %>%
+  ggplot(aes(term, n, fill = polarity)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~polarity, scales = "free_y") +
+  labs(y = "Sentimento",
+       x = NULL) +
+  coord_flip()
 ```
 
 ## Referências
