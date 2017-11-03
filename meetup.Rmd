@@ -1,0 +1,58 @@
+---
+title: "R Notebook"
+output: html_notebook
+author: "Andrei Martins e Charles Mendes"
+---
+
+## Instalar e carregar `rtweet`
+
+```{r}
+# install.packages("rtweet")
+library(rtweet)
+```
+
+## Criar app no Twitter
+
+1) Acesse https://apps.twitter.com e crie um novo aplicativo.
+2) No campo `Callback URL` preencher com: http://127.0.0.1:1410
+3) Aceite os termos e clique em "Create your Twitter application".
+4) Vá em "Keys and Access Tokens" e anote os valores dos campos `Consumer Key`, `Consumer Secret`. Eles serão utilizados para autenticação na próxima seção.
+
+```{r}
+## Nome do seu aplicativo
+appname <- "nerdzao"
+
+## Consumer Key (API Key)
+key <- "29lJMLodwnkMNO6guU435B5K1"
+
+## Consumer Secret (API Secret)
+secret <- "6IIjtDyaFftDZc6E58l7mZojEmTJWnIQM2cdrA62ICFX6ZfRBm"
+
+## Criar token para o app
+twitter_token <- create_token(app = appname, 
+                              consumer_key = key, 
+                              consumer_secret = secret)
+```
+
+## Coleta de dados
+
+Vamos coletar dados dos 4 grandes clubes paulistas: Corinthians, Palmeiras, Santos, São Paulo.
+```{r, message=FALSE}
+# Define lista de clubes dos quais queremos extrair tweets
+clubes <- c("@Corinthians", "@Palmeiras", "@SantosFC", "@SaoPauloFC")
+
+# Extrai 200 tweets que menciona cada clube especificado
+rt <- lapply(clubes, search_tweets, n = 200, token = twitter_token)
+tw_sccp <- rt[1]
+tw_sep  <- rt[2]
+tw_sfc  <- rt[3]
+tw_spfc <- rt[4]
+
+# Salvar para uso posterior
+save(rt, file = "tweets_clubes.RData")
+```
+
+## Referências
+
+- [Cliente R para API do Twitter](https://github.com/mkearney/rtweet)
+- [Text Mining With R](http://tidytextmining.com/)
