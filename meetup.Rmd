@@ -55,22 +55,44 @@ twitter_token <- create_token(app = nomeAplicativo,
 
 ## Coleta de dados
 
-Vamos coletar dados dos 4 grandes clubes paulistas: Corinthians, Palmeiras, Santos e São Paulo.
+Vamos coletar e preparar os dados dos *tweets* dos 4 grandes clubes paulistas (Corinthians, Palmeiras, Santos e São Paulo).
+Para isso, vamos:
+
+1) Definir a lista de clubes
+2) Fazer a requisição à Search API do Twitter
+3) Consolidar as requisições em uma única tabela
+4) Selecionar colunas de interesse
+5) Salvar dados para uso posterior
+
 ```{r, message=FALSE}
-# Define lista de clubes dos quais queremos extrair tweets
-clubes <- c("@Corinthians", "@Palmeiras", "@SantosFC", "@SaoPauloFC")
-
-# Extrai 200 tweets que menciona cada clube especificado
-# rt <- lapply(clubes, search_tweets, n = 200, token = twitter_token)
-
-# Salvar para uso posterior
-# save(rt, file = "tweets_clubes.RData")
+# 0) Carregar dados para evitar consulta ao Twitter
 load("tweets_clubes.RData")
 
-tw_sccp <- rt[1]
-tw_sep  <- rt[2]
-tw_sfc  <- rt[3]
-tw_spfc <- rt[4]
+# 1) Definir a lista de clubes
+clubes <- c("@Corinthians", "@Palmeiras", "@SantosFC", "@SaoPauloFC")
+
+# 2) Fazer a requisição à Search API do Twitter
+# Extrai 200 tweets sobre cada clube especificado, totalizando 800 tweets
+# tweets <- lapply(clubes, search_tweets, n = 200, token = twitter_token)
+
+# 3) Consolidar as requisições em uma única tabela
+tw_sccp <- tweets[[1]] %>%
+  mutate(clube = "Corinthians")
+tw_sep  <- tweets[[2]] %>%
+  mutate(clube = "Palmeiras")
+tw_sfc  <- tweets[[3]] %>%
+  mutate(clube = "Santos")
+tw_spfc <- tweets[[4]] %>%
+  mutate(clube = "São Paulo")
+
+tweets_clubes <- rbind(tw_sccp, tw_sep, tw_sfc, tw_spfc)
+
+# 4) Selecionar colunas de interesse
+tweets_clubes <- tweets_clubes %>%
+  select(clube, text, created_at)
+
+# 5) Salvar dados para uso posterior
+# save(tweets, tweets_clubes, file = "tweets_clubes.RData") # Salvar para uso posterior
 ```
 
 ## Análise de Sentimento
@@ -96,30 +118,21 @@ dicio %>%
   select(term, polarity)
 ```
 
-### Seleção de informações
+### Corinthians
 
-Na estrutura de dados abaixo, cada linha é um *tweet*. Cada coluna representa 
-um atributo do *tweet*, como `id do usuário`, `data de criação`, entre outros.
+```{r, message=FALSE}
 
-Mas nós só temos interesse em minerar os textos, então vamos manter apenas os
-atributos `data de criação`, `text` e `hashtags`.
-```{r}
-df_sccp <- tw_sccp[[1]] %>%
-  select(created_at, text) %>%
-  mutate(clube = "corinthians")
-df_sccp <- df_sccp[,c(3,2,1)]
-
-tokens_sccp <- df_sccp %>%
-  unnest_tokens(term, text)
-
-tokens_sccp
-dicio
-
-sentimento_sccp <- tokens_sccp %>%
-  inner_join(dicio) %>%
+# Análise de sentimento dos tweets referentes ao Corinthians
+sentimento_sccp <- tweets_clubes %>%
+  filter(clube == "Corinthians") %>%  # Apenas tweets referentes ao Corinthians
+  unnest_tokens(term, text) %>%       # Quebra os tweets em palavras
+  inner_join(dicio) %>%               
   count(term, polarity, sort = TRUE) %>%
   ungroup()
 
+sentimento_sccp
+
+# Gráfico de sentimento
 sentimento_sccp %>%
   group_by(polarity) %>%
   top_n(10) %>%
@@ -133,6 +146,102 @@ sentimento_sccp %>%
   coord_flip()
 ```
 
+### Palmeiras
+
+```{r, message=FALSE}
+
+# Análise de sentimento dos tweets referentes ao Corinthians
+sentimento_sep <- tweets_clubes %>%
+  filter(clube == "Palmeiras") %>%  # Apenas tweets referentes ao Corinthians
+  unnest_tokens(term, text) %>%     # Quebra os tweets em palavras
+  inner_join(dicio) %>%               
+  count(term, polarity, sort = TRUE) %>%
+  ungroup()
+
+sentimento_sep
+
+# Gráfico de sentimento
+sentimento_sep %>%
+  group_by(polarity) %>%
+  top_n(10) %>%
+  ungroup() %>%
+  mutate(term = reorder(term, n)) %>%
+  ggplot(aes(term, n, fill = polarity)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~polarity, scales = "free_y") +
+  labs(y = "Sentimento",
+       x = NULL) +
+  coord_flip()
+```
+
+### Santos
+
+```{r, message=FALSE}
+
+# Análise de sentimento dos tweets referentes ao Corinthians
+sentimento_sfc <- tweets_clubes %>%
+  filter(clube == "Santos") %>%  # Apenas tweets referentes ao Corinthians
+  unnest_tokens(term, text) %>%     # Quebra os tweets em palavras
+  inner_join(dicio) %>%               
+  count(term, polarity, sort = TRUE) %>%
+  ungroup()
+
+sentimento_sfc
+
+# Gráfico de sentimento
+sentimento_sfc %>%
+  group_by(polarity) %>%
+  top_n(10) %>%
+  ungroup() %>%
+  mutate(term = reorder(term, n)) %>%
+  ggplot(aes(term, n, fill = polarity)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~polarity, scales = "free_y") +
+  labs(y = "Sentimento",
+       x = NULL) +
+  coord_flip()
+```
+
+
+### São Paulo
+
+```{r, message=FALSE}
+
+# Análise de sentimento dos tweets referentes ao Corinthians
+sentimento_spfc <- tweets_clubes %>%
+  filter(clube == "São Paulo") %>%  # Apenas tweets referentes ao Corinthians
+  unnest_tokens(term, text) %>%     # Quebra os tweets em palavras
+  inner_join(dicio) %>%               
+  count(term, polarity, sort = TRUE) %>%
+  ungroup()
+
+sentimento_spfc
+
+# Gráfico de sentimento
+sentimento_spfc %>%
+  group_by(polarity) %>%
+  top_n(10) %>%
+  ungroup() %>%
+  mutate(term = reorder(term, n)) %>%
+  ggplot(aes(term, n, fill = polarity)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~polarity, scales = "free_y") +
+  labs(y = "Sentimento",
+       x = NULL) +
+  coord_flip()
+```
+
+### Sentimento Geral
+```{r, message = FALSE}
+tweets_clubes %>%
+  unnest_tokens(term, text) %>%
+  inner_join(dicio) %>%
+  group_by(clube) %>%
+  summarise(sum(polarity)) %>%
+  ggplot(aes(clube, `sum(polarity)`)) +
+  geom_col(show.legend = FALSE) +
+  labs(x = "Clube", y = "Sentimento")
+```
 ## Referências
 
 - [Cliente R para API do Twitter](https://github.com/mkearney/rtweet)
