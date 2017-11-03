@@ -7,7 +7,7 @@ author: "Andrei Martins e Charles Mendes"
 ## Instalar e carregar `rtweet`
 
 ```{r}
-# install.packages("rtweet")
+if(!require(rtweet)) install.packages("rtweet")
 library(rtweet)
 ```
 
