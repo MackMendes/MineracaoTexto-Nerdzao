@@ -242,6 +242,135 @@ tweets_clubes %>%
   geom_col(show.legend = FALSE) +
   labs(x = "Clube", y = "Sentimento")
 ```
+
+## Calculando a frequência das palavras (tf)
+
+
+Vamos calcular a frequência das palavras 
+
+```{r}
+
+texto_clubes <- tweets_clubes %>%
+  unnest_tokens(term, text) %>%
+  count(clube, term, sort = TRUE) %>%
+  ungroup()
+
+
+total_texto_clubes <- texto_clubes %>% 
+  group_by(clube) %>% 
+  summarize(total = sum(n))
+
+
+texto_clubes <- left_join(texto_clubes, total_texto_clubes)
+
+texto_clubes
+
+```
+
+
+Agora, realizarmos o calculo da Frequencia dos Termos (TF) por time:
+
+```{r}
+
+tf_texto_clubes_by_rank <- texto_clubes %>% 
+  group_by(clube) %>% 
+  mutate(rank = row_number(), 
+         `TF` = n/total)
+
+tf_texto_clubes_by_rank
+
+```
+
+E por fim, plotando os termos:
+
+```{r}
+
+plot_austen <- tf_texto_clubes_by_rank %>%
+  ungroup(tf_texto_clubes_by_rank) %>%
+  arrange(desc(TF)) %>%
+  mutate(term = factor(term, levels = rev(unique(term))))
+
+plot_austen %>% 
+  top_n(20) %>%
+  ggplot(aes(term, TF, fill = clube)) +
+  geom_col() +
+  labs(x = NULL, y = "Frequencia dos Termos (TF)") +
+  coord_flip()
+
+```
+
+
+## Calculando a idf
+
+```{r}
+
+texto_clubes_tf_idf <- texto_clubes %>%
+  bind_tf_idf(term, clube, n)
+texto_clubes_tf_idf
+
+```
+
+
+
+
+
+## Calculando o tf-idf
+
+
+```{r}
+
+texto_clubes_tf_idf <- texto_clubes %>%
+  bind_tf_idf(term, clube, n)
+texto_clubes_tf_idf
+
+```
+
+
+
+
+```{r}
+
+texto_clubes_tf_idf %>%
+  select(-total) %>%
+  arrange(desc(tf_idf))
+
+```
+
+
+```{r}
+
+plot_austen <- texto_clubes_tf_idf %>%
+  arrange(desc(tf_idf)) %>%
+  mutate(term = factor(term, levels = rev(unique(term))))
+
+plot_austen %>% 
+  top_n(20) %>%
+  ggplot(aes(term, tf_idf, fill = clube)) +
+  geom_col() +
+  labs(x = NULL, y = "tf-idf") +
+  coord_flip()
+
+```
+
+
+
+Agora, para cada clube: 
+
+
+```{r}
+
+plot_austen %>% 
+  group_by(clube) %>% 
+  top_n(15) %>% 
+  ungroup %>%
+  ggplot(aes(term, tf_idf, fill = clube)) +
+  geom_col(show.legend = FALSE) +
+  labs(x = NULL, y = "tf-idf") +
+  facet_wrap(~clube, ncol = 2, scales = "free") +
+  coord_flip()
+
+```
+
 ## Referências
 
 - [Cliente R para API do Twitter](https://github.com/mkearney/rtweet)
