@@ -222,11 +222,12 @@ tweets_clubes %>%
   group_by(clube) %>%
   summarise(sum(polarity)) %>%
   ggplot(aes(clube, `sum(polarity)`)) +
+  scale_fill_manual(values=c("#060606", "#1e5b3c", "#313030", "#da1010")) +
   geom_col(show.legend = FALSE) +
   labs(x = "Clube", y = "Sentimento")
 ```
 
-## Calculando a frequência das palavras (tf)
+## Calculando a Frequência das Palavras (TF)
 
 
 Vamos calcular a frequência das palavras dentro dos Twitters dos clubes: 
@@ -268,14 +269,15 @@ E por fim, plotando os termos:
 
 ```{r}
 
-plot_austen <- tf_texto_clubes_by_rank %>%
+plot_clubes_tf <- tf_texto_clubes_by_rank %>%
   ungroup(tf_texto_clubes_by_rank) %>%
   arrange(desc(TF)) %>%
   mutate(termo = factor(termo, levels = rev(unique(termo))))
 
-plot_austen %>% 
+plot_clubes_tf %>% 
   top_n(20) %>%
   ggplot(aes(termo, TF, fill = clube)) +
+  scale_fill_manual(values=c("#060606", "#1e5b3c", "#313030", "#da1010")) +
   geom_col() +
   labs(x = NULL, y = "Frequencia dos Termos (TF)") +
   coord_flip()
@@ -283,7 +285,9 @@ plot_austen %>%
 ```
 
 
-## Calculando a idf
+## Calculando a Freqüência Inversa no Documento (IDF)
+
+Sparck Jones desenvolveu uma interpretação estatística da especificidade  dos  termos  (1972),  chamada  de  IDF. 
 
 ```{r}
 
@@ -294,10 +298,25 @@ texto_clubes_tf_idf
 ```
 
 
+```{r}
+
+plot_clubes_idf <- texto_clubes_tf_idf %>%
+  ungroup(texto_clubes_tf_idf) %>%
+  arrange(desc(idf)) %>%
+  mutate(termo = factor(termo, levels = rev(unique(termo))))
+
+plot_clubes_idf %>% 
+  top_n(20) %>%
+  ggplot(aes(termo, idf, fill = clube)) +
+  scale_fill_manual(values=c("#060606", "#1e5b3c", "#313030", "#da1010")) +
+  geom_col() +
+  labs(x = NULL, y = "Freqüência Inversa no Documento (IDF)") +
+  coord_flip()
+
+```
 
 
-
-## Calculando o tf-idf
+## Calculando a ponderação TF-IDF
 
 
 ```{r}
@@ -329,6 +348,7 @@ plot_clubes_tf_idf <- texto_clubes_tf_idf %>%
 plot_clubes_tf_idf %>% 
   top_n(20) %>%
   ggplot(aes(termo, tf_idf, fill = clube)) +
+  scale_fill_manual(values=c("#060606", "#1e5b3c", "#313030", "#da1010")) +
   geom_col() +
   labs(x = NULL, y = "tf-idf") +
   coord_flip()
@@ -347,6 +367,7 @@ plot_clubes_tf_idf %>%
   top_n(15) %>% 
   ungroup %>%
   ggplot(aes(termo, tf_idf, fill = clube)) +
+  scale_fill_manual(values=c("#060606", "#1e5b3c", "#313030", "#da1010")) +
   geom_col(show.legend = FALSE) +
   labs(x = NULL, y = "tf-idf") +
   facet_wrap(~clube, ncol = 2, scales = "free") +
@@ -394,7 +415,7 @@ bigramas_tweets_texto_clubes_tf_idf %>%
 
 ```
 
-Vamos vê os plotes: 
+Vamos vê os plotes para cada clube: 
 
 ```{r}
 
@@ -403,26 +424,13 @@ plot_clubes_tf_idf_bigrama <- bigramas_tweets_texto_clubes_tf_idf %>%
   mutate(bigrama = factor(bigrama, levels = rev(unique(bigrama))))
 
 plot_clubes_tf_idf_bigrama %>% 
-  top_n(20) %>%
-  ggplot(aes(bigrama, tf_idf, fill = clube)) +
-  geom_col() +
-  labs(x = NULL, y = "TF-IDF dos Bigramas") +
-  coord_flip()
-
-```
-
-
-Por cada clube: 
-
-```{r}
-
-plot_clubes_tf_idf_bigrama %>% 
   group_by(clube) %>% 
   top_n(15) %>% 
   ungroup %>%
   ggplot(aes(bigrama, tf_idf, fill = clube)) +
   geom_col(show.legend = FALSE) +
   labs(x = NULL, y = "TF-IDF dos Bigramas por Clube") +
+  scale_fill_manual(values=c("#060606", "#1e5b3c", "#313030", "#da1010")) +
   facet_wrap(~clube, ncol = 2, scales = "free") +
   coord_flip()
 
