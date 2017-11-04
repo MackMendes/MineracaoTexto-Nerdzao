@@ -9,22 +9,14 @@ date: "04 de Novembro de 2017"
 
 ```{r, message=FALSE}
 # Instala pacotes caso ainda não tenham sido instalados
-if(!require(dplyr)) install.packages("dplyr")
-if(!require(ggplot2)) install.packages("ggplot2")
-if(!require(httpuv)) install.packages("httpuv")
-if(!require(lexiconPT)) install.packages("lexiconPT")
-if(!require(rtweet)) install.packages("rtweet")
-if(!require(tidytext)) install.packages("tidytext")
-if(!require(wordcloud)) install.packages("wordcloud")
-
-# Carrega pacotes para análise
-library(dplyr)     # Manipulação de dados
-library(ggplot2)   # Visualização de dados
-library(httpuv)    # Suporte a HTTP e WebSocket
-library(lexiconPT) # Dicionário para análise de sentimento
-library(rtweet)    # Cliente para Twitter Search API
-library(tidytext)  # Mineração de textos
-library(wordcloud) # Visualização de textos
+if(!require(dplyr)) install.packages("dplyr")  # Manipulação de dados
+if(!require(ggplot2)) install.packages("ggplot2") # Visualização de dados
+if(!require(httpuv)) install.packages("httpuv")  # Suporte a HTTP e WebSocket
+if(!require(lexiconPT)) install.packages("lexiconPT")  # Análise de Sentimento
+if(!require(rtweet)) install.packages("rtweet")  # Cliente para Twitter Search API
+if(!require(tidytext)) install.packages("tidytext") # Mineração de textos
+if(!require(wordcloud)) install.packages("wordcloud") # Visualização de textos
+if(!require(RDRPOSTagger)) install.packages("RDRPOSTagger")  # Mineração de Textos
 ```
 
 ## Criar app no Twitter
