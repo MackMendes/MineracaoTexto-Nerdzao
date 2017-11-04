@@ -104,7 +104,7 @@ top_words
 top_sccp <- top_words %>%
   filter(clube == "Corinthians")
   
-wordcloud(top_sccp$term, top_sccp$n)
+wordcloud(top_sccp$term, top_sccp$n, colors = brewer.pal(8, "Dark2"))
 ```
 
 ### Palmeiras
@@ -112,14 +112,14 @@ wordcloud(top_sccp$term, top_sccp$n)
 top_sep <- top_words %>%
   filter(clube == "Palmeiras")
   
-wordcloud(top_sep$term, top_sep$n, colors = brewer.pal(9, "Greens"))
+wordcloud(top_sep$term, top_sep$n, colors = brewer.pal(8, "Dark2"))
 ```
 ### Santos
 ```{r, warning=FALSE}
 top_sfc <- top_words %>%
   filter(clube == "Santos")
   
-wordcloud(top_sfc$term, top_sfc$n)
+wordcloud(top_sfc$term, top_sfc$n, colors = brewer.pal(8, "Dark2"))
 ```
 
 ### São Paulo
@@ -127,7 +127,7 @@ wordcloud(top_sfc$term, top_sfc$n)
 top_spfc <- top_words %>%
   filter(clube == "São Paulo")
   
-wordcloud(top_spfc$term, top_spfc$n, colors = brewer.pal(9, "Reds"))
+wordcloud(top_spfc$term, top_spfc$n, colors = brewer.pal(8, "Dark2"))
 ```
 
 ## Análise de Sentimento
@@ -137,20 +137,8 @@ Vamos ver o sentimento transmitidos por algumas palavras.
 ```{r}
 dicio <- oplexicon_v3.0 # Carrega dicionário de sentimentos
 
-# Sentimento transmitido pela palavra "inteligente"
-dicio %>%
-  filter(term == "inteligente") %>%
-  select(term, polarity)
-
-# Sentimento transmitido pela palavra "academico"
-dicio %>%
-  filter(term == "academico") %>%
-  select(term, polarity)
-
-# Sentimento transmitido pela palavra "lento"
-dicio %>%
-  filter(term == "lento") %>%
-  select(term, polarity)
+# Cinco palavras aleatórias
+dicio[sample(1:nrow(dicio), 5) ,]
 ```
 
 ### Corinthians
@@ -161,7 +149,7 @@ dicio %>%
 sentimento_sccp <- tweets_clubes %>%
   filter(clube == "Corinthians") %>%  # Apenas tweets referentes ao Corinthians
   unnest_tokens(term, text) %>%       # Quebra os tweets em palavras
-  inner_join(dicio) %>%               
+  inner_join(dicio) %>%
   count(term, polarity, sort = TRUE) %>%
   ungroup()
 
@@ -172,7 +160,7 @@ sentimento_sccp
 
 ```{r, message=FALSE}
 
-# Análise de sentimento dos tweets referentes ao Corinthians
+# Análise de sentimento dos tweets referentes ao Palmeiras
 sentimento_sep <- tweets_clubes %>%
   filter(clube == "Palmeiras") %>%  # Apenas tweets referentes ao Corinthians
   unnest_tokens(term, text) %>%     # Quebra os tweets em palavras
@@ -187,7 +175,7 @@ sentimento_sep
 
 ```{r, message=FALSE}
 
-# Análise de sentimento dos tweets referentes ao Corinthians
+# Análise de sentimento dos tweets referentes ao Santos
 sentimento_sfc <- tweets_clubes %>%
   filter(clube == "Santos") %>%  # Apenas tweets referentes ao Corinthians
   unnest_tokens(term, text) %>%     # Quebra os tweets em palavras
@@ -221,9 +209,9 @@ tweets_clubes %>%
   inner_join(dicio) %>%
   group_by(clube) %>%
   summarise(sum(polarity)) %>%
-  ggplot(aes(clube, `sum(polarity)`)) +
-  scale_fill_manual(values=c("#060606", "#1e5b3c", "#313030", "#da1010")) +
+  ggplot(aes(clube, `sum(polarity)`, fill = clube)) +
   geom_col(show.legend = FALSE) +
+  scale_fill_manual(values = c("#060606", "#1e5b3c", "#313030", "#da1010")) +
   labs(x = "Clube", y = "Sentimento")
 ```
 
@@ -232,7 +220,7 @@ tweets_clubes %>%
 
 Vamos calcular a frequência das palavras dentro dos Twitters dos clubes: 
 
-```{r}
+```{r, message=FALSE}
 
 texto_clubes <- tweets_clubes %>%
   unnest_tokens(termo, text) %>%
@@ -267,7 +255,7 @@ tf_texto_clubes_by_rank
 
 E por fim, plotando os termos:
 
-```{r}
+```{r, message=FALSE}
 
 plot_clubes_tf <- tf_texto_clubes_by_rank %>%
   ungroup(tf_texto_clubes_by_rank) %>%
@@ -287,7 +275,7 @@ plot_clubes_tf %>%
 
 ## Calculando a Freqüência Inversa no Documento (IDF)
 
-Sparck Jones desenvolveu uma interpretação estatística da especificidade  dos  termos  (1972),  chamada  de  IDF. 
+Sparck Jones desenvolveu uma interpretação estatística da especificidade  dos  termos  (1972),  chamada de IDF. 
 
 ```{r}
 
@@ -298,7 +286,7 @@ texto_clubes_tf_idf
 ```
 
 
-```{r}
+```{r, message=FALSE}
 
 plot_clubes_idf <- texto_clubes_tf_idf %>%
   ungroup(texto_clubes_tf_idf) %>%
@@ -318,18 +306,6 @@ plot_clubes_idf %>%
 
 ## Calculando a ponderação TF-IDF
 
-
-```{r}
-
-texto_clubes_tf_idf <- texto_clubes %>%
-  bind_tf_idf(termo, clube, n)
-texto_clubes_tf_idf
-
-```
-
-
-
-
 ```{r}
 
 texto_clubes_tf_idf %>%
@@ -339,7 +315,7 @@ texto_clubes_tf_idf %>%
 ```
 
 
-```{r}
+```{r, message=FALSE}
 
 plot_clubes_tf_idf <- texto_clubes_tf_idf %>%
   arrange(desc(tf_idf)) %>%
@@ -360,7 +336,7 @@ plot_clubes_tf_idf %>%
 Agora, para cada clube: 
 
 
-```{r}
+```{r, message=FALSE}
 
 plot_clubes_tf_idf %>% 
   group_by(clube) %>% 
@@ -391,7 +367,7 @@ bigramas_tweets_clubes
 
 Recalculando o TF-IDF com o Bigrama: 
 
-```{r}
+```{r, message=FALSE}
 
 bigramas_tweets_texto_clubes <- bigramas_tweets_clubes %>%
   count(clube, bigrama, sort = TRUE) %>%
@@ -417,7 +393,7 @@ bigramas_tweets_texto_clubes_tf_idf %>%
 
 Vamos vê os plotes para cada clube: 
 
-```{r}
+```{r, message=FALSE}
 
 plot_clubes_tf_idf_bigrama <- bigramas_tweets_texto_clubes_tf_idf %>%
   arrange(desc(tf_idf)) %>%
@@ -433,7 +409,6 @@ plot_clubes_tf_idf_bigrama %>%
   scale_fill_manual(values=c("#060606", "#1e5b3c", "#313030", "#da1010")) +
   facet_wrap(~clube, ncol = 2, scales = "free") +
   coord_flip()
-
 ```
 
 
