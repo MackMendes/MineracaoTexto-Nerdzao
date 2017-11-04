@@ -330,11 +330,11 @@ texto_clubes_tf_idf %>%
 
 ```{r}
 
-plot_austen <- texto_clubes_tf_idf %>%
+plot_clubes_tf_idf <- texto_clubes_tf_idf %>%
   arrange(desc(tf_idf)) %>%
   mutate(term = factor(term, levels = rev(unique(term))))
 
-plot_austen %>% 
+plot_clubes_tf_idf %>% 
   top_n(20) %>%
   ggplot(aes(term, tf_idf, fill = clube)) +
   geom_col() +
@@ -350,7 +350,7 @@ Agora, para cada clube:
 
 ```{r}
 
-plot_austen %>% 
+plot_clubes_tf_idf %>% 
   group_by(clube) %>% 
   top_n(15) %>% 
   ungroup %>%
@@ -361,6 +361,81 @@ plot_austen %>%
   coord_flip()
 
 ```
+
+
+## Bigrama
+
+Abaixo, vamos calcular o Bi-gram: 
+
+```{r}
+
+bigrams_tweets_clubes <- tweets_clubes %>%
+  unnest_tokens(bigram, text, token = "ngrams", n = 2)
+
+bigrams_tweets_clubes
+
+```
+
+Recalculando o TF-IDF com o Bi-gram: 
+
+```{r}
+
+bigrams_tweets_texto_clubes <- bigrams_tweets_clubes %>%
+  count(clube, bigram, sort = TRUE) %>%
+  ungroup()
+
+
+total_bigrams_tweets_texto_clubes <- bigrams_tweets_texto_clubes %>% 
+  group_by(clube) %>% 
+  summarize(total = sum(n))
+
+
+bigrams_tweets_texto_clubes <- left_join(bigrams_tweets_texto_clubes, total_bigrams_tweets_texto_clubes)
+
+bigrams_tweets_texto_clubes_tf_idf <- bigrams_tweets_texto_clubes %>%
+  bind_tf_idf(bigram, clube, n)
+
+
+bigrams_tweets_texto_clubes_tf_idf %>%
+  select(-total) %>%
+  arrange(desc(tf_idf))
+
+```
+
+Vamos vê os plotes: 
+
+```{r}
+
+plot_clubes_tf_idf_bigram <- bigrams_tweets_texto_clubes_tf_idf %>%
+  arrange(desc(tf_idf)) %>%
+  mutate(bigram = factor(bigram, levels = rev(unique(bigram))))
+
+plot_clubes_tf_idf_bigram %>% 
+  top_n(20) %>%
+  ggplot(aes(bigram, tf_idf, fill = clube)) +
+  geom_col() +
+  labs(x = NULL, y = "TF-IDF dos Bi-grams") +
+  coord_flip()
+
+```
+
+
+Por cada clube: 
+
+```{r}
+
+plot_clubes_tf_idf_bigram %>% 
+  group_by(clube) %>% 
+  top_n(15) %>% 
+  ungroup %>%
+  ggplot(aes(bigram, tf_idf, fill = clube)) +
+  geom_col(show.legend = FALSE) +
+  labs(x = NULL, y = "TF-IDF dos Bi-grams por Clube") +
+  facet_wrap(~clube, ncol = 2, scales = "free") +
+  coord_flip()
+
+```
+
 
 ## ReferÃªncias
 
