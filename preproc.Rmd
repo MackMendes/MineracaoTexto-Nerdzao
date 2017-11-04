@@ -1,0 +1,36 @@
+---
+title: "Pré-processamento"
+output: html_notebook
+---
+
+```{r, warning=FALSE}
+if(!require(quanteda)) install.packages("quanteda")
+```
+
+## Texto Original
+
+```{r}
+# https://pt.wikipedia.org/wiki/Minera%C3%A7%C3%A3o_de_texto
+texto <- "Abordagens manuais de trabalho intensivo da mineração do texto vieram à tona na metade dos anos 80, mas os avanços tecnológicos possibilitaram o avanço do campo durante a década passada. A mineração do texto é um campo interdisciplinar que se baseia na recuperação de informações, extração de dados, aprendizado de máquina, estatísticas e linguística computacional. Quanto mais informações (as estimativas comuns afirmam ser acima de 80%) são armazenadas em forma de texto, acredita-se que a mineração do texto possua um alto valor comercial potencial. O interesse crescente está relacionado a mineração multilíngue de dados: a capacidade de obter informações através de línguas e agrupar itens similares de diversas fontes linguísticas de acordo com o seu sentido."
+texto
+```
+
+## Tokenização
+```{r}
+tok <- tokens(texto)
+tok
+```
+## Remover pontuação, números e símbolos
+```{r}
+tok <- tokens(tok, remove_numbers = TRUE, remove_punct = TRUE,
+       remove_symbols = TRUE)
+tok
+```
+
+## Remover stopwords
+```{r}
+tok <- tokens_remove(tok, stopwords("portuguese"))
+tok
+```
+
+
