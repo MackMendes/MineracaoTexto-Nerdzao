@@ -237,13 +237,13 @@ tweets_clubes %>%
 ## Calculando a frequência das palavras (tf)
 
 
-Vamos calcular a frequência das palavras 
+Vamos calcular a frequência das palavras dentro dos Twitters dos clubes: 
 
 ```{r}
 
 texto_clubes <- tweets_clubes %>%
-  unnest_tokens(term, text) %>%
-  count(clube, term, sort = TRUE) %>%
+  unnest_tokens(termo, text) %>%
+  count(clube, termo, sort = TRUE) %>%
   ungroup()
 
 
@@ -279,11 +279,11 @@ E por fim, plotando os termos:
 plot_austen <- tf_texto_clubes_by_rank %>%
   ungroup(tf_texto_clubes_by_rank) %>%
   arrange(desc(TF)) %>%
-  mutate(term = factor(term, levels = rev(unique(term))))
+  mutate(termo = factor(termo, levels = rev(unique(termo))))
 
 plot_austen %>% 
   top_n(20) %>%
-  ggplot(aes(term, TF, fill = clube)) +
+  ggplot(aes(termo, TF, fill = clube)) +
   geom_col() +
   labs(x = NULL, y = "Frequencia dos Termos (TF)") +
   coord_flip()
@@ -296,7 +296,7 @@ plot_austen %>%
 ```{r}
 
 texto_clubes_tf_idf <- texto_clubes %>%
-  bind_tf_idf(term, clube, n)
+  bind_tf_idf(termo, clube, n)
 texto_clubes_tf_idf
 
 ```
@@ -311,7 +311,7 @@ texto_clubes_tf_idf
 ```{r}
 
 texto_clubes_tf_idf <- texto_clubes %>%
-  bind_tf_idf(term, clube, n)
+  bind_tf_idf(termo, clube, n)
 texto_clubes_tf_idf
 
 ```
@@ -332,11 +332,11 @@ texto_clubes_tf_idf %>%
 
 plot_clubes_tf_idf <- texto_clubes_tf_idf %>%
   arrange(desc(tf_idf)) %>%
-  mutate(term = factor(term, levels = rev(unique(term))))
+  mutate(termo = factor(termo, levels = rev(unique(termo))))
 
 plot_clubes_tf_idf %>% 
   top_n(20) %>%
-  ggplot(aes(term, tf_idf, fill = clube)) +
+  ggplot(aes(termo, tf_idf, fill = clube)) +
   geom_col() +
   labs(x = NULL, y = "tf-idf") +
   coord_flip()
@@ -354,7 +354,7 @@ plot_clubes_tf_idf %>%
   group_by(clube) %>% 
   top_n(15) %>% 
   ungroup %>%
-  ggplot(aes(term, tf_idf, fill = clube)) +
+  ggplot(aes(termo, tf_idf, fill = clube)) +
   geom_col(show.legend = FALSE) +
   labs(x = NULL, y = "tf-idf") +
   facet_wrap(~clube, ncol = 2, scales = "free") +
@@ -365,56 +365,56 @@ plot_clubes_tf_idf %>%
 
 ## Bigrama
 
-Abaixo, vamos calcular o Bi-gram: 
+Abaixo, vamos calcular o Bigrama: 
 
 ```{r}
 
-bigrams_tweets_clubes <- tweets_clubes %>%
-  unnest_tokens(bigram, text, token = "ngrams", n = 2)
+bigramas_tweets_clubes <- tweets_clubes %>%
+  unnest_tokens(bigrama, text, token = "ngrams", n = 2)
 
-bigrams_tweets_clubes
+bigramas_tweets_clubes
 
 ```
 
-Recalculando o TF-IDF com o Bi-gram: 
+Recalculando o TF-IDF com o Bigrama: 
 
 ```{r}
 
-bigrams_tweets_texto_clubes <- bigrams_tweets_clubes %>%
-  count(clube, bigram, sort = TRUE) %>%
+bigramas_tweets_texto_clubes <- bigramas_tweets_clubes %>%
+  count(clube, bigrama, sort = TRUE) %>%
   ungroup()
 
 
-total_bigrams_tweets_texto_clubes <- bigrams_tweets_texto_clubes %>% 
+total_bigramas_tweets_texto_clubes <- bigramas_tweets_texto_clubes %>% 
   group_by(clube) %>% 
   summarize(total = sum(n))
 
 
-bigrams_tweets_texto_clubes <- left_join(bigrams_tweets_texto_clubes, total_bigrams_tweets_texto_clubes)
+bigramas_tweets_texto_clubes <- left_join(bigramas_tweets_texto_clubes, total_bigramas_tweets_texto_clubes)
 
-bigrams_tweets_texto_clubes_tf_idf <- bigrams_tweets_texto_clubes %>%
-  bind_tf_idf(bigram, clube, n)
+bigramas_tweets_texto_clubes_tf_idf <- bigramas_tweets_texto_clubes %>%
+  bind_tf_idf(bigrama, clube, n)
 
 
-bigrams_tweets_texto_clubes_tf_idf %>%
+bigramas_tweets_texto_clubes_tf_idf %>%
   select(-total) %>%
   arrange(desc(tf_idf))
 
 ```
 
-Vamos v� os plotes: 
+Vamos vê os plotes: 
 
 ```{r}
 
-plot_clubes_tf_idf_bigram <- bigrams_tweets_texto_clubes_tf_idf %>%
+plot_clubes_tf_idf_bigrama <- bigramas_tweets_texto_clubes_tf_idf %>%
   arrange(desc(tf_idf)) %>%
-  mutate(bigram = factor(bigram, levels = rev(unique(bigram))))
+  mutate(bigrama = factor(bigrama, levels = rev(unique(bigrama))))
 
-plot_clubes_tf_idf_bigram %>% 
+plot_clubes_tf_idf_bigrama %>% 
   top_n(20) %>%
-  ggplot(aes(bigram, tf_idf, fill = clube)) +
+  ggplot(aes(bigrama, tf_idf, fill = clube)) +
   geom_col() +
-  labs(x = NULL, y = "TF-IDF dos Bi-grams") +
+  labs(x = NULL, y = "TF-IDF dos Bigramas") +
   coord_flip()
 
 ```
@@ -424,13 +424,13 @@ Por cada clube:
 
 ```{r}
 
-plot_clubes_tf_idf_bigram %>% 
+plot_clubes_tf_idf_bigrama %>% 
   group_by(clube) %>% 
   top_n(15) %>% 
   ungroup %>%
-  ggplot(aes(bigram, tf_idf, fill = clube)) +
+  ggplot(aes(bigrama, tf_idf, fill = clube)) +
   geom_col(show.legend = FALSE) +
-  labs(x = NULL, y = "TF-IDF dos Bi-grams por Clube") +
+  labs(x = NULL, y = "TF-IDF dos Bigramas por Clube") +
   facet_wrap(~clube, ncol = 2, scales = "free") +
   coord_flip()
 
