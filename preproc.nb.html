@@ -9,6 +9,7 @@
 <meta name="generator" content="pandoc" />
 
 
+<meta name="author" content="Andrei Martins e Charles Mendes" />
 
 
 <title>Pré-processamento</title>
@@ -167,6 +168,8 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">Pré-processamento</h1>
+<h4 class="author"><em>Andrei Martins e Charles Mendes</em></h4>
+<h4 class="date"><em>04 de Novembro de 2017</em></h4>
 
 </div>
 
@@ -183,13 +186,15 @@ $(document).ready(function () {
 <h2>Texto Original</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBodHRwczovL3B0Lndpa2lwZWRpYS5vcmcvd2lraS9NaW5lcmElQzMlQTclQzMlQTNvX2RlX3RleHRvXG50ZXh0byA8LSBcIkFib3JkYWdlbnMgbWFudWFpcyBkZSB0cmFiYWxobyBpbnRlbnNpdm8gZGEgbWluZXJhw6fDo28gZG8gdGV4dG8gdmllcmFtIMOgIHRvbmEgbmEgbWV0YWRlIGRvcyBhbm9zIDgwLCBtYXMgb3MgYXZhbsOnb3MgdGVjbm9sw7NnaWNvcyBwb3NzaWJpbGl0YXJhbSBvIGF2YW7Dp28gZG8gY2FtcG8gZHVyYW50ZSBhIGTDqWNhZGEgcGFzc2FkYS4gQSBtaW5lcmHDp8OjbyBkbyB0ZXh0byDDqSB1bSBjYW1wbyBpbnRlcmRpc2NpcGxpbmFyIHF1ZSBzZSBiYXNlaWEgbmEgcmVjdXBlcmHDp8OjbyBkZSBpbmZvcm1hw6fDtWVzLCBleHRyYcOnw6NvIGRlIGRhZG9zLCBhcHJlbmRpemFkbyBkZSBtw6FxdWluYSwgZXN0YXTDrXN0aWNhcyBlIGxpbmd1w61zdGljYSBjb21wdXRhY2lvbmFsLiBRdWFudG8gbWFpcyBpbmZvcm1hw6fDtWVzIChhcyBlc3RpbWF0aXZhcyBjb211bnMgYWZpcm1hbSBzZXIgYWNpbWEgZGUgODAlKSBzw6NvIGFybWF6ZW5hZGFzIGVtIGZvcm1hIGRlIHRleHRvLCBhY3JlZGl0YS1zZSBxdWUgYSBtaW5lcmHDp8OjbyBkbyB0ZXh0byBwb3NzdWEgdW0gYWx0byB2YWxvciBjb21lcmNpYWwgcG90ZW5jaWFsLiBPIGludGVyZXNzZSBjcmVzY2VudGUgZXN0w6EgcmVsYWNpb25hZG8gYSBtaW5lcmHDp8OjbyBtdWx0aWzDrW5ndWUgZGUgZGFkb3M6IGEgY2FwYWNpZGFkZSBkZSBvYnRlciBpbmZvcm1hw6fDtWVzIGF0cmF2w6lzIGRlIGzDrW5ndWFzIGUgYWdydXBhciBpdGVucyBzaW1pbGFyZXMgZGUgZGl2ZXJzYXMgZm9udGVzIGxpbmd1w61zdGljYXMgZGUgYWNvcmRvIGNvbSBvIHNldSBzZW50aWRvLlwiXG50ZXh0b1xuYGBgIn0= -->
-<pre class="r"><code># https://pt.wikipedia.org/wiki/Minera%C3%A7%C3%A3o_de_texto
-texto &lt;- &quot;Abordagens manuais de trabalho intensivo da mineração do texto vieram à tona na metade dos anos 80, mas os avanços tecnológicos possibilitaram o avanço do campo durante a década passada. A mineração do texto é um campo interdisciplinar que se baseia na recuperação de informações, extração de dados, aprendizado de máquina, estatísticas e linguística computacional. Quanto mais informações (as estimativas comuns afirmam ser acima de 80%) são armazenadas em forma de texto, acredita-se que a mineração do texto possua um alto valor comercial potencial. O interesse crescente está relacionado a mineração multilíngue de dados: a capacidade de obter informações através de línguas e agrupar itens similares de diversas fontes linguísticas de acordo com o seu sentido.&quot;
-texto</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYW5kcmVpIDwtIFwiQ2llbnRpc3RhIGRlIERhZG9zIG5hIEdlbm9hIFBlcmZvcm1hbmNlLCBvbmRlIGF0dWEgY29tIG8gZGVzZW52b2x2aW1lbnRvIGRlIHNpc3RlbWFzIGludGVsaWdlbnRlcyBwYXJhIG90aW1pemHDp8OjbyBkbyBhdGVuZGltZW50byBlbSBDYWxsIENlbnRlcnMuIENvbW8gcGFydGUgZGUgc2V1IG1lc3RyYWRvIG5hIFVuaXZlcnNpZGFkZSBkZSBTw6NvIFBhdWxvIGNvbmR1eiBwZXNxdWlzYSBuYSDDoXJlYSBkZSBTaXN0ZW1hcyBkZSBSZWNvbWVuZGHDp8Ojby5cIlxuY2hhcmxlcyA8LSBcIkNpZW50aXN0YSBkZSBEYWRvcyBlIEFuYWxpc3RhIERlc2Vudm9sdmVkb3IgbmEgR2Vub2EgUGVyZm9ybWFuY2UsIGF0dWEgY29tIG8gZGVzZW52b2x2aW1lbnRvIGRlIHNpc3RlbWFzIGludGVsaWdlbnRlcyBwYXJhIG90aW1pemHDp8OjbyBkbyBhdGVuZGltZW50byBwYXJhIGVtcHJlc2FzIGRlIFRlbGVjb211bmljYcOnw7Vlcy4gRXN0dWRhbnRlIGRlIE1lc3RyYWRvIHBlbGEgVW5pdmVyc2lkYWRlIGRlIFPDo28gUGF1bG8sIGNvbSBwZXNxdWlzYSBuYSDDoXJlYSBkZSBTaXN0ZW1hcyBJbnRlbGlnZW50ZXMgYXBsaWNhZG8gbmEgZGV0ZWPDp8OjbyBhdXRvbcOhdGljYSBkZSBmYWxoYXMgbm8gZGVzZW52b2x2aW1lbnRvIGRlIHNvZnR3YXJlLlwiXG5jb3JwdXMgPC0gYyhhbmRyZWksIGNoYXJsZXMpXG5jb3JwdXNcbmBgYCJ9 -->
+<pre class="r"><code>andrei &lt;- &quot;Cientista de Dados na Genoa Performance, onde atua com o desenvolvimento de sistemas inteligentes para otimização do atendimento em Call Centers. Como parte de seu mestrado na Universidade de São Paulo conduz pesquisa na área de Sistemas de Recomendação.&quot;
+charles &lt;- &quot;Cientista de Dados e Analista Desenvolvedor na Genoa Performance, atua com o desenvolvimento de sistemas inteligentes para otimização do atendimento para empresas de Telecomunicações. Estudante de Mestrado pela Universidade de São Paulo, com pesquisa na área de Sistemas Inteligentes aplicado na detecção automática de falhas no desenvolvimento de software.&quot;
+corpus &lt;- c(andrei, charles)
+corpus</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiQWJvcmRhZ2VucyBtYW51YWlzIGRlIHRyYWJhbGhvIGludGVuc2l2byBkYSBtaW5lcmHDp8OjbyBkbyB0ZXh0byB2aWVyYW0gw6AgdG9uYSBuYSBtZXRhZGUgZG9zIGFub3MgODAsIG1hcyBvcyBhdmFuw6dvcyB0ZWNub2zDs2dpY29zIHBvc3NpYmlsaXRhcmFtIG8gYXZhbsOnbyBkbyBjYW1wbyBkdXJhbnRlIGEgZMOpY2FkYSBwYXNzYWRhLiBBIG1pbmVyYcOnw6NvIGRvIHRleHRvIMOpIHVtIGNhbXBvIGludGVyZGlzY2lwbGluYXIgcXVlIHNlIGJhc2VpYSBuYSByZWN1cGVyYcOnw6NvIGRlIGluZm9ybWHDp8O1ZXMsIGV4dHJhw6fDo28gZGUgZGFkb3MsIGFwcmVuZGl6YWRvIGRlIG3DoXF1aW5hLCBlc3RhdMOtc3RpY2FzIGUgbGluZ3XDrXN0aWNhIGNvbXB1dGFjaW9uYWwuIFF1YW50byBtYWlzIGluZm9ybWHDp8O1ZXMgKGFzIGVzdGltYXRpdmFzIGNvbXVucyBhZmlybWFtIHNlciBhY2ltYSBkZSA4MCUpIHPDo28gYXJtYXplbmFkYXMgZW0gZm9ybWEgZGUgdGV4dG8sIGFjcmVkaXRhLXNlIHF1ZSBhIG1pbmVyYcOnw6NvIGRvIHRleHRvIHBvc3N1YSB1bSBhbHRvIHZhbG9yIGNvbWVyY2lhbCBwb3RlbmNpYWwuIE8gaW50ZXJlc3NlIGNyZXNjZW50ZSBlc3TDoSByZWxhY2lvbmFkbyBhIG1pbmVyYcOnw6NvIG11bHRpbMOtbmd1ZSBkZSBkYWRvczogYSBjYXBhY2lkYWRlIGRlIG9idGVyIGluZm9ybWHDp8O1ZXMgYXRyYXbDqXMgZGUgbMOtbmd1YXMgZSBhZ3J1cGFyIGl0ZW5zIHNpbWlsYXJlcyBkZSBkaXZlcnNhcyBmb250ZXMgbGluZ3XDrXN0aWNhcyBkZSBhY29yZG8gY29tIG8gc2V1IHNlbnRpZG8uXCJcbiJ9 -->
-<pre><code>[1] &quot;Abordagens manuais de trabalho intensivo da mineração do texto vieram à tona na metade dos anos 80, mas os avanços tecnológicos possibilitaram o avanço do campo durante a década passada. A mineração do texto é um campo interdisciplinar que se baseia na recuperação de informações, extração de dados, aprendizado de máquina, estatísticas e linguística computacional. Quanto mais informações (as estimativas comuns afirmam ser acima de 80%) são armazenadas em forma de texto, acredita-se que a mineração do texto possua um alto valor comercial potencial. O interesse crescente está relacionado a mineração multilíngue de dados: a capacidade de obter informações através de línguas e agrupar itens similares de diversas fontes linguísticas de acordo com o seu sentido.&quot;</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiQ2llbnRpc3RhIGRlIERhZG9zIG5hIEdlbm9hIFBlcmZvcm1hbmNlLCBvbmRlIGF0dWEgY29tIG8gZGVzZW52b2x2aW1lbnRvIGRlIHNpc3RlbWFzIGludGVsaWdlbnRlcyBwYXJhIG90aW1pemHDp8OjbyBkbyBhdGVuZGltZW50byBlbSBDYWxsIENlbnRlcnMuIENvbW8gcGFydGUgZGUgc2V1IG1lc3RyYWRvIG5hIFVuaXZlcnNpZGFkZSBkZSBTw6NvIFBhdWxvIGNvbmR1eiBwZXNxdWlzYSBuYSDDoXJlYSBkZSBTaXN0ZW1hcyBkZSBSZWNvbWVuZGHDp8Ojby5cIiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcblsyXSBcIkNpZW50aXN0YSBkZSBEYWRvcyBlIEFuYWxpc3RhIERlc2Vudm9sdmVkb3IgbmEgR2Vub2EgUGVyZm9ybWFuY2UsIGF0dWEgY29tIG8gZGVzZW52b2x2aW1lbnRvIGRlIHNpc3RlbWFzIGludGVsaWdlbnRlcyBwYXJhIG90aW1pemHDp8OjbyBkbyBhdGVuZGltZW50byBwYXJhIGVtcHJlc2FzIGRlIFRlbGVjb211bmljYcOnw7Vlcy4gRXN0dWRhbnRlIGRlIE1lc3RyYWRvIHBlbGEgVW5pdmVyc2lkYWRlIGRlIFPDo28gUGF1bG8sIGNvbSBwZXNxdWlzYSBuYSDDoXJlYSBkZSBTaXN0ZW1hcyBJbnRlbGlnZW50ZXMgYXBsaWNhZG8gbmEgZGV0ZWPDp8OjbyBhdXRvbcOhdGljYSBkZSBmYWxoYXMgbm8gZGVzZW52b2x2aW1lbnRvIGRlIHNvZnR3YXJlLlwiXG4ifQ== -->
+<pre><code>[1] &quot;Cientista de Dados na Genoa Performance, onde atua com o desenvolvimento de sistemas inteligentes para otimização do atendimento em Call Centers. Como parte de seu mestrado na Universidade de São Paulo conduz pesquisa na área de Sistemas de Recomendação.&quot;                                                                                                       
+[2] &quot;Cientista de Dados e Analista Desenvolvedor na Genoa Performance, atua com o desenvolvimento de sistemas inteligentes para otimização do atendimento para empresas de Telecomunicações. Estudante de Mestrado pela Universidade de São Paulo, com pesquisa na área de Sistemas Inteligentes aplicado na detecção automática de falhas no desenvolvimento de software.&quot;</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -198,46 +203,38 @@ texto</code></pre>
 <h2>Tokenização</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudG9rIDwtIHRva2Vucyh0ZXh0bylcbnRva1xuYGBgIn0= -->
-<pre class="r"><code>tok &lt;- tokens(texto)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudG9rIDwtIHRva2Vucyhjb3JwdXMpXG50b2tcbmBgYCJ9 -->
+<pre class="r"><code>tok &lt;- tokens(corpus)
 tok</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoidG9rZW5zIGZyb20gMSBkb2N1bWVudC5cbnRleHQxIDpcbiAgWzFdIFwiQWJvcmRhZ2Vuc1wiICAgICAgIFwibWFudWFpc1wiICAgICAgICAgIFwiZGVcIiAgICAgICAgICAgICAgIFwidHJhYmFsaG9cIiAgICAgICAgXG4gIFs1XSBcImludGVuc2l2b1wiICAgICAgICBcImRhXCIgICAgICAgICAgICAgICBcIm1pbmVyYcOnw6NvXCIgICAgICAgIFwiZG9cIiAgICAgICAgICAgICAgXG4gIFs5XSBcInRleHRvXCIgICAgICAgICAgICBcInZpZXJhbVwiICAgICAgICAgICBcIsOgXCIgICAgICAgICAgICAgICAgXCJ0b25hXCIgICAgICAgICAgICBcbiBbMTNdIFwibmFcIiAgICAgICAgICAgICAgIFwibWV0YWRlXCIgICAgICAgICAgIFwiZG9zXCIgICAgICAgICAgICAgIFwiYW5vc1wiICAgICAgICAgICAgXG4gWzE3XSBcIjgwXCIgICAgICAgICAgICAgICBcIixcIiAgICAgICAgICAgICAgICBcIm1hc1wiICAgICAgICAgICAgICBcIm9zXCIgICAgICAgICAgICAgIFxuIFsyMV0gXCJhdmFuw6dvc1wiICAgICAgICAgIFwidGVjbm9sw7NnaWNvc1wiICAgICBcInBvc3NpYmlsaXRhcmFtXCIgICBcIm9cIiAgICAgICAgICAgICAgIFxuIFsyNV0gXCJhdmFuw6dvXCIgICAgICAgICAgIFwiZG9cIiAgICAgICAgICAgICAgIFwiY2FtcG9cIiAgICAgICAgICAgIFwiZHVyYW50ZVwiICAgICAgICAgXG4gWzI5XSBcImFcIiAgICAgICAgICAgICAgICBcImTDqWNhZGFcIiAgICAgICAgICAgXCJwYXNzYWRhXCIgICAgICAgICAgXCIuXCIgICAgICAgICAgICAgICBcbiBbMzNdIFwiQVwiICAgICAgICAgICAgICAgIFwibWluZXJhw6fDo29cIiAgICAgICAgXCJkb1wiICAgICAgICAgICAgICAgXCJ0ZXh0b1wiICAgICAgICAgICBcbiBbMzddIFwiw6lcIiAgICAgICAgICAgICAgICBcInVtXCIgICAgICAgICAgICAgICBcImNhbXBvXCIgICAgICAgICAgICBcImludGVyZGlzY2lwbGluYXJcIlxuIFs0MV0gXCJxdWVcIiAgICAgICAgICAgICAgXCJzZVwiICAgICAgICAgICAgICAgXCJiYXNlaWFcIiAgICAgICAgICAgXCJuYVwiICAgICAgICAgICAgICBcbiBbNDVdIFwicmVjdXBlcmHDp8Ojb1wiICAgICAgXCJkZVwiICAgICAgICAgICAgICAgXCJpbmZvcm1hw6fDtWVzXCIgICAgICBcIixcIiAgICAgICAgICAgICAgIFxuIFs0OV0gXCJleHRyYcOnw6NvXCIgICAgICAgICBcImRlXCIgICAgICAgICAgICAgICBcImRhZG9zXCIgICAgICAgICAgICBcIixcIiAgICAgICAgICAgICAgIFxuIFs1M10gXCJhcHJlbmRpemFkb1wiICAgICAgXCJkZVwiICAgICAgICAgICAgICAgXCJtw6FxdWluYVwiICAgICAgICAgIFwiLFwiICAgICAgICAgICAgICAgXG4gWzU3XSBcImVzdGF0w61zdGljYXNcIiAgICAgXCJlXCIgICAgICAgICAgICAgICAgXCJsaW5ndcOtc3RpY2FcIiAgICAgIFwiY29tcHV0YWNpb25hbFwiICAgXG4gWzYxXSBcIi5cIiAgICAgICAgICAgICAgICBcIlF1YW50b1wiICAgICAgICAgICBcIm1haXNcIiAgICAgICAgICAgICBcImluZm9ybWHDp8O1ZXNcIiAgICAgXG4gWzY1XSBcIihcIiAgICAgICAgICAgICAgICBcImFzXCIgICAgICAgICAgICAgICBcImVzdGltYXRpdmFzXCIgICAgICBcImNvbXVuc1wiICAgICAgICAgIFxuIFs2OV0gXCJhZmlybWFtXCIgICAgICAgICAgXCJzZXJcIiAgICAgICAgICAgICAgXCJhY2ltYVwiICAgICAgICAgICAgXCJkZVwiICAgICAgICAgICAgICBcbiBbNzNdIFwiODBcIiAgICAgICAgICAgICAgIFwiJVwiICAgICAgICAgICAgICAgIFwiKVwiICAgICAgICAgICAgICAgIFwic8Ojb1wiICAgICAgICAgICAgIFxuIFs3N10gXCJhcm1hemVuYWRhc1wiICAgICAgXCJlbVwiICAgICAgICAgICAgICAgXCJmb3JtYVwiICAgICAgICAgICAgXCJkZVwiICAgICAgICAgICAgICBcbiBbODFdIFwidGV4dG9cIiAgICAgICAgICAgIFwiLFwiICAgICAgICAgICAgICAgIFwiYWNyZWRpdGEtc2VcIiAgICAgIFwicXVlXCIgICAgICAgICAgICAgXG4gWzg1XSBcImFcIiAgICAgICAgICAgICAgICBcIm1pbmVyYcOnw6NvXCIgICAgICAgIFwiZG9cIiAgICAgICAgICAgICAgIFwidGV4dG9cIiAgICAgICAgICAgXG4gWzg5XSBcInBvc3N1YVwiICAgICAgICAgICBcInVtXCIgICAgICAgICAgICAgICBcImFsdG9cIiAgICAgICAgICAgICBcInZhbG9yXCIgICAgICAgICAgIFxuIFs5M10gXCJjb21lcmNpYWxcIiAgICAgICAgXCJwb3RlbmNpYWxcIiAgICAgICAgXCIuXCIgICAgICAgICAgICAgICAgXCJPXCIgICAgICAgICAgICAgICBcbiBbOTddIFwiaW50ZXJlc3NlXCIgICAgICAgIFwiY3Jlc2NlbnRlXCIgICAgICAgIFwiZXN0w6FcIiAgICAgICAgICAgICBcInJlbGFjaW9uYWRvXCIgICAgIFxuWzEwMV0gXCJhXCIgICAgICAgICAgICAgICAgXCJtaW5lcmHDp8Ojb1wiICAgICAgICBcIm11bHRpbMOtbmd1ZVwiICAgICAgXCJkZVwiICAgICAgICAgICAgICBcblsxMDVdIFwiZGFkb3NcIiAgICAgICAgICAgIFwiOlwiICAgICAgICAgICAgICAgIFwiYVwiICAgICAgICAgICAgICAgIFwiY2FwYWNpZGFkZVwiICAgICAgXG5bMTA5XSBcImRlXCIgICAgICAgICAgICAgICBcIm9idGVyXCIgICAgICAgICAgICBcImluZm9ybWHDp8O1ZXNcIiAgICAgIFwiYXRyYXbDqXNcIiAgICAgICAgIFxuWzExM10gXCJkZVwiICAgICAgICAgICAgICAgXCJsw61uZ3Vhc1wiICAgICAgICAgIFwiZVwiICAgICAgICAgICAgICAgIFwiYWdydXBhclwiICAgICAgICAgXG5bMTE3XSBcIml0ZW5zXCIgICAgICAgICAgICBcInNpbWlsYXJlc1wiICAgICAgICBcImRlXCIgICAgICAgICAgICAgICBcImRpdmVyc2FzXCIgICAgICAgIFxuWzEyMV0gXCJmb250ZXNcIiAgICAgICAgICAgXCJsaW5ndcOtc3RpY2FzXCIgICAgIFwiZGVcIiAgICAgICAgICAgICAgIFwiYWNvcmRvXCIgICAgICAgICAgXG5bMTI1XSBcImNvbVwiICAgICAgICAgICAgICBcIm9cIiAgICAgICAgICAgICAgICBcInNldVwiICAgICAgICAgICAgICBcInNlbnRpZG9cIiAgICAgICAgIFxuWzEyOV0gXCIuXCIgICAgICAgICAgICAgICBcbiJ9 -->
-<pre><code>tokens from 1 document.
+<!-- rnb-output-begin eyJkYXRhIjoidG9rZW5zIGZyb20gMiBkb2N1bWVudHMuXG50ZXh0MSA6XG4gWzFdIFwiQ2llbnRpc3RhXCIgICAgICAgXCJkZVwiICAgICAgICAgICAgICBcIkRhZG9zXCIgICAgICAgICAgIFwibmFcIiAgICAgICAgICAgICAgXCJHZW5vYVwiICAgICAgICAgIFxuIFs2XSBcIlBlcmZvcm1hbmNlXCIgICAgIFwiLFwiICAgICAgICAgICAgICAgXCJvbmRlXCIgICAgICAgICAgICBcImF0dWFcIiAgICAgICAgICAgIFwiY29tXCIgICAgICAgICAgICBcblsxMV0gXCJvXCIgICAgICAgICAgICAgICBcImRlc2Vudm9sdmltZW50b1wiIFwiZGVcIiAgICAgICAgICAgICAgXCJzaXN0ZW1hc1wiICAgICAgICBcImludGVsaWdlbnRlc1wiICAgXG5bMTZdIFwicGFyYVwiICAgICAgICAgICAgXCJvdGltaXphw6fDo29cIiAgICAgIFwiZG9cIiAgICAgICAgICAgICAgXCJhdGVuZGltZW50b1wiICAgICBcImVtXCIgICAgICAgICAgICAgXG5bMjFdIFwiQ2FsbFwiICAgICAgICAgICAgXCJDZW50ZXJzXCIgICAgICAgICBcIi5cIiAgICAgICAgICAgICAgIFwiQ29tb1wiICAgICAgICAgICAgXCJwYXJ0ZVwiICAgICAgICAgIFxuWzI2XSBcImRlXCIgICAgICAgICAgICAgIFwic2V1XCIgICAgICAgICAgICAgXCJtZXN0cmFkb1wiICAgICAgICBcIm5hXCIgICAgICAgICAgICAgIFwiVW5pdmVyc2lkYWRlXCIgICBcblszMV0gXCJkZVwiICAgICAgICAgICAgICBcIlPDo29cIiAgICAgICAgICAgICBcIlBhdWxvXCIgICAgICAgICAgIFwiY29uZHV6XCIgICAgICAgICAgXCJwZXNxdWlzYVwiICAgICAgIFxuWzM2XSBcIm5hXCIgICAgICAgICAgICAgIFwiw6FyZWFcIiAgICAgICAgICAgIFwiZGVcIiAgICAgICAgICAgICAgXCJTaXN0ZW1hc1wiICAgICAgICBcImRlXCIgICAgICAgICAgICAgXG5bNDFdIFwiUmVjb21lbmRhw6fDo29cIiAgICBcIi5cIiAgICAgICAgICAgICAgXG5cbnRleHQyIDpcbiBbMV0gXCJDaWVudGlzdGFcIiAgICAgICAgXCJkZVwiICAgICAgICAgICAgICAgXCJEYWRvc1wiICAgICAgICAgICAgXCJlXCIgICAgICAgICAgICAgICBcbiBbNV0gXCJBbmFsaXN0YVwiICAgICAgICAgXCJEZXNlbnZvbHZlZG9yXCIgICAgXCJuYVwiICAgICAgICAgICAgICAgXCJHZW5vYVwiICAgICAgICAgICBcbiBbOV0gXCJQZXJmb3JtYW5jZVwiICAgICAgXCIsXCIgICAgICAgICAgICAgICAgXCJhdHVhXCIgICAgICAgICAgICAgXCJjb21cIiAgICAgICAgICAgICBcblsxM10gXCJvXCIgICAgICAgICAgICAgICAgXCJkZXNlbnZvbHZpbWVudG9cIiAgXCJkZVwiICAgICAgICAgICAgICAgXCJzaXN0ZW1hc1wiICAgICAgICBcblsxN10gXCJpbnRlbGlnZW50ZXNcIiAgICAgXCJwYXJhXCIgICAgICAgICAgICAgXCJvdGltaXphw6fDo29cIiAgICAgICBcImRvXCIgICAgICAgICAgICAgIFxuWzIxXSBcImF0ZW5kaW1lbnRvXCIgICAgICBcInBhcmFcIiAgICAgICAgICAgICBcImVtcHJlc2FzXCIgICAgICAgICBcImRlXCIgICAgICAgICAgICAgIFxuWzI1XSBcIlRlbGVjb211bmljYcOnw7Vlc1wiIFwiLlwiICAgICAgICAgICAgICAgIFwiRXN0dWRhbnRlXCIgICAgICAgIFwiZGVcIiAgICAgICAgICAgICAgXG5bMjldIFwiTWVzdHJhZG9cIiAgICAgICAgIFwicGVsYVwiICAgICAgICAgICAgIFwiVW5pdmVyc2lkYWRlXCIgICAgIFwiZGVcIiAgICAgICAgICAgICAgXG5bMzNdIFwiU8Ojb1wiICAgICAgICAgICAgICBcIlBhdWxvXCIgICAgICAgICAgICBcIixcIiAgICAgICAgICAgICAgICBcImNvbVwiICAgICAgICAgICAgIFxuWzM3XSBcInBlc3F1aXNhXCIgICAgICAgICBcIm5hXCIgICAgICAgICAgICAgICBcIsOhcmVhXCIgICAgICAgICAgICAgXCJkZVwiICAgICAgICAgICAgICBcbls0MV0gXCJTaXN0ZW1hc1wiICAgICAgICAgXCJJbnRlbGlnZW50ZXNcIiAgICAgXCJhcGxpY2Fkb1wiICAgICAgICAgXCJuYVwiICAgICAgICAgICAgICBcbls0NV0gXCJkZXRlY8Onw6NvXCIgICAgICAgICBcImF1dG9tw6F0aWNhXCIgICAgICAgXCJkZVwiICAgICAgICAgICAgICAgXCJmYWxoYXNcIiAgICAgICAgICBcbls0OV0gXCJub1wiICAgICAgICAgICAgICAgXCJkZXNlbnZvbHZpbWVudG9cIiAgXCJkZVwiICAgICAgICAgICAgICAgXCJzb2Z0d2FyZVwiICAgICAgICBcbls1M10gXCIuXCIgICAgICAgICAgICAgICBcbiJ9 -->
+<pre><code>tokens from 2 documents.
 text1 :
-  [1] &quot;Abordagens&quot;       &quot;manuais&quot;          &quot;de&quot;               &quot;trabalho&quot;        
-  [5] &quot;intensivo&quot;        &quot;da&quot;               &quot;mineração&quot;        &quot;do&quot;              
-  [9] &quot;texto&quot;            &quot;vieram&quot;           &quot;à&quot;                &quot;tona&quot;            
- [13] &quot;na&quot;               &quot;metade&quot;           &quot;dos&quot;              &quot;anos&quot;            
- [17] &quot;80&quot;               &quot;,&quot;                &quot;mas&quot;              &quot;os&quot;              
- [21] &quot;avanços&quot;          &quot;tecnológicos&quot;     &quot;possibilitaram&quot;   &quot;o&quot;               
- [25] &quot;avanço&quot;           &quot;do&quot;               &quot;campo&quot;            &quot;durante&quot;         
- [29] &quot;a&quot;                &quot;década&quot;           &quot;passada&quot;          &quot;.&quot;               
- [33] &quot;A&quot;                &quot;mineração&quot;        &quot;do&quot;               &quot;texto&quot;           
- [37] &quot;é&quot;                &quot;um&quot;               &quot;campo&quot;            &quot;interdisciplinar&quot;
- [41] &quot;que&quot;              &quot;se&quot;               &quot;baseia&quot;           &quot;na&quot;              
- [45] &quot;recuperação&quot;      &quot;de&quot;               &quot;informações&quot;      &quot;,&quot;               
- [49] &quot;extração&quot;         &quot;de&quot;               &quot;dados&quot;            &quot;,&quot;               
- [53] &quot;aprendizado&quot;      &quot;de&quot;               &quot;máquina&quot;          &quot;,&quot;               
- [57] &quot;estatísticas&quot;     &quot;e&quot;                &quot;linguística&quot;      &quot;computacional&quot;   
- [61] &quot;.&quot;                &quot;Quanto&quot;           &quot;mais&quot;             &quot;informações&quot;     
- [65] &quot;(&quot;                &quot;as&quot;               &quot;estimativas&quot;      &quot;comuns&quot;          
- [69] &quot;afirmam&quot;          &quot;ser&quot;              &quot;acima&quot;            &quot;de&quot;              
- [73] &quot;80&quot;               &quot;%&quot;                &quot;)&quot;                &quot;são&quot;             
- [77] &quot;armazenadas&quot;      &quot;em&quot;               &quot;forma&quot;            &quot;de&quot;              
- [81] &quot;texto&quot;            &quot;,&quot;                &quot;acredita-se&quot;      &quot;que&quot;             
- [85] &quot;a&quot;                &quot;mineração&quot;        &quot;do&quot;               &quot;texto&quot;           
- [89] &quot;possua&quot;           &quot;um&quot;               &quot;alto&quot;             &quot;valor&quot;           
- [93] &quot;comercial&quot;        &quot;potencial&quot;        &quot;.&quot;                &quot;O&quot;               
- [97] &quot;interesse&quot;        &quot;crescente&quot;        &quot;está&quot;             &quot;relacionado&quot;     
-[101] &quot;a&quot;                &quot;mineração&quot;        &quot;multilíngue&quot;      &quot;de&quot;              
-[105] &quot;dados&quot;            &quot;:&quot;                &quot;a&quot;                &quot;capacidade&quot;      
-[109] &quot;de&quot;               &quot;obter&quot;            &quot;informações&quot;      &quot;através&quot;         
-[113] &quot;de&quot;               &quot;línguas&quot;          &quot;e&quot;                &quot;agrupar&quot;         
-[117] &quot;itens&quot;            &quot;similares&quot;        &quot;de&quot;               &quot;diversas&quot;        
-[121] &quot;fontes&quot;           &quot;linguísticas&quot;     &quot;de&quot;               &quot;acordo&quot;          
-[125] &quot;com&quot;              &quot;o&quot;                &quot;seu&quot;              &quot;sentido&quot;         
-[129] &quot;.&quot;               </code></pre>
+ [1] &quot;Cientista&quot;       &quot;de&quot;              &quot;Dados&quot;           &quot;na&quot;              &quot;Genoa&quot;          
+ [6] &quot;Performance&quot;     &quot;,&quot;               &quot;onde&quot;            &quot;atua&quot;            &quot;com&quot;            
+[11] &quot;o&quot;               &quot;desenvolvimento&quot; &quot;de&quot;              &quot;sistemas&quot;        &quot;inteligentes&quot;   
+[16] &quot;para&quot;            &quot;otimização&quot;      &quot;do&quot;              &quot;atendimento&quot;     &quot;em&quot;             
+[21] &quot;Call&quot;            &quot;Centers&quot;         &quot;.&quot;               &quot;Como&quot;            &quot;parte&quot;          
+[26] &quot;de&quot;              &quot;seu&quot;             &quot;mestrado&quot;        &quot;na&quot;              &quot;Universidade&quot;   
+[31] &quot;de&quot;              &quot;São&quot;             &quot;Paulo&quot;           &quot;conduz&quot;          &quot;pesquisa&quot;       
+[36] &quot;na&quot;              &quot;área&quot;            &quot;de&quot;              &quot;Sistemas&quot;        &quot;de&quot;             
+[41] &quot;Recomendação&quot;    &quot;.&quot;              
+
+text2 :
+ [1] &quot;Cientista&quot;        &quot;de&quot;               &quot;Dados&quot;            &quot;e&quot;               
+ [5] &quot;Analista&quot;         &quot;Desenvolvedor&quot;    &quot;na&quot;               &quot;Genoa&quot;           
+ [9] &quot;Performance&quot;      &quot;,&quot;                &quot;atua&quot;             &quot;com&quot;             
+[13] &quot;o&quot;                &quot;desenvolvimento&quot;  &quot;de&quot;               &quot;sistemas&quot;        
+[17] &quot;inteligentes&quot;     &quot;para&quot;             &quot;otimização&quot;       &quot;do&quot;              
+[21] &quot;atendimento&quot;      &quot;para&quot;             &quot;empresas&quot;         &quot;de&quot;              
+[25] &quot;Telecomunicações&quot; &quot;.&quot;                &quot;Estudante&quot;        &quot;de&quot;              
+[29] &quot;Mestrado&quot;         &quot;pela&quot;             &quot;Universidade&quot;     &quot;de&quot;              
+[33] &quot;São&quot;              &quot;Paulo&quot;            &quot;,&quot;                &quot;com&quot;             
+[37] &quot;pesquisa&quot;         &quot;na&quot;               &quot;área&quot;             &quot;de&quot;              
+[41] &quot;Sistemas&quot;         &quot;Inteligentes&quot;     &quot;aplicado&quot;         &quot;na&quot;              
+[45] &quot;detecção&quot;         &quot;automática&quot;       &quot;de&quot;               &quot;falhas&quot;          
+[49] &quot;no&quot;               &quot;desenvolvimento&quot;  &quot;de&quot;               &quot;software&quot;        
+[53] &quot;.&quot;               </code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -251,27 +248,32 @@ text1 :
        remove_symbols = TRUE)
 tok</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoidG9rZW5zIGZyb20gMSBkb2N1bWVudC5cbnRleHQxIDpcbiBbMV0gXCJBYm9yZGFnZW5zXCIgICAgICAgXCJtYW51YWlzXCIgICAgICAgICAgXCJ0cmFiYWxob1wiICAgICAgICAgXCJpbnRlbnNpdm9cIiAgICAgICBcbiBbNV0gXCJtaW5lcmHDp8Ojb1wiICAgICAgICBcInRleHRvXCIgICAgICAgICAgICBcInZpZXJhbVwiICAgICAgICAgICBcInRvbmFcIiAgICAgICAgICAgIFxuIFs5XSBcIm1ldGFkZVwiICAgICAgICAgICBcImFub3NcIiAgICAgICAgICAgICBcImF2YW7Dp29zXCIgICAgICAgICAgXCJ0ZWNub2zDs2dpY29zXCIgICAgXG5bMTNdIFwicG9zc2liaWxpdGFyYW1cIiAgIFwiYXZhbsOnb1wiICAgICAgICAgICBcImNhbXBvXCIgICAgICAgICAgICBcImR1cmFudGVcIiAgICAgICAgIFxuWzE3XSBcImTDqWNhZGFcIiAgICAgICAgICAgXCJwYXNzYWRhXCIgICAgICAgICAgXCJtaW5lcmHDp8Ojb1wiICAgICAgICBcInRleHRvXCIgICAgICAgICAgIFxuWzIxXSBcIsOpXCIgICAgICAgICAgICAgICAgXCJjYW1wb1wiICAgICAgICAgICAgXCJpbnRlcmRpc2NpcGxpbmFyXCIgXCJiYXNlaWFcIiAgICAgICAgICBcblsyNV0gXCJyZWN1cGVyYcOnw6NvXCIgICAgICBcImluZm9ybWHDp8O1ZXNcIiAgICAgIFwiZXh0cmHDp8Ojb1wiICAgICAgICAgXCJkYWRvc1wiICAgICAgICAgICBcblsyOV0gXCJhcHJlbmRpemFkb1wiICAgICAgXCJtw6FxdWluYVwiICAgICAgICAgIFwiZXN0YXTDrXN0aWNhc1wiICAgICBcImxpbmd1w61zdGljYVwiICAgICBcblszM10gXCJjb21wdXRhY2lvbmFsXCIgICAgXCJRdWFudG9cIiAgICAgICAgICAgXCJpbmZvcm1hw6fDtWVzXCIgICAgICBcImVzdGltYXRpdmFzXCIgICAgIFxuWzM3XSBcImNvbXVuc1wiICAgICAgICAgICBcImFmaXJtYW1cIiAgICAgICAgICBcInNlclwiICAgICAgICAgICAgICBcImFjaW1hXCIgICAgICAgICAgIFxuWzQxXSBcImFybWF6ZW5hZGFzXCIgICAgICBcImZvcm1hXCIgICAgICAgICAgICBcInRleHRvXCIgICAgICAgICAgICBcImFjcmVkaXRhLXNlXCIgICAgIFxuWzQ1XSBcIm1pbmVyYcOnw6NvXCIgICAgICAgIFwidGV4dG9cIiAgICAgICAgICAgIFwicG9zc3VhXCIgICAgICAgICAgIFwiYWx0b1wiICAgICAgICAgICAgXG5bNDldIFwidmFsb3JcIiAgICAgICAgICAgIFwiY29tZXJjaWFsXCIgICAgICAgIFwicG90ZW5jaWFsXCIgICAgICAgIFwiaW50ZXJlc3NlXCIgICAgICAgXG5bNTNdIFwiY3Jlc2NlbnRlXCIgICAgICAgIFwicmVsYWNpb25hZG9cIiAgICAgIFwibWluZXJhw6fDo29cIiAgICAgICAgXCJtdWx0aWzDrW5ndWVcIiAgICAgXG5bNTddIFwiZGFkb3NcIiAgICAgICAgICAgIFwiY2FwYWNpZGFkZVwiICAgICAgIFwib2J0ZXJcIiAgICAgICAgICAgIFwiaW5mb3JtYcOnw7Vlc1wiICAgICBcbls2MV0gXCJhdHJhdsOpc1wiICAgICAgICAgIFwibMOtbmd1YXNcIiAgICAgICAgICBcImFncnVwYXJcIiAgICAgICAgICBcIml0ZW5zXCIgICAgICAgICAgIFxuWzY1XSBcInNpbWlsYXJlc1wiICAgICAgICBcImRpdmVyc2FzXCIgICAgICAgICBcImZvbnRlc1wiICAgICAgICAgICBcImxpbmd1w61zdGljYXNcIiAgICBcbls2OV0gXCJhY29yZG9cIiAgICAgICAgICAgXCJzZW50aWRvXCIgICAgICAgICBcbiJ9 -->
-<pre><code>tokens from 1 document.
+<!-- rnb-output-begin eyJkYXRhIjoidG9rZW5zIGZyb20gMiBkb2N1bWVudHMuXG50ZXh0MSA6XG4gWzFdIFwiQ2llbnRpc3RhXCIgICAgICAgXCJkZVwiICAgICAgICAgICAgICBcIkRhZG9zXCIgICAgICAgICAgIFwibmFcIiAgICAgICAgICAgICAgXCJHZW5vYVwiICAgICAgICAgIFxuIFs2XSBcIlBlcmZvcm1hbmNlXCIgICAgIFwib25kZVwiICAgICAgICAgICAgXCJhdHVhXCIgICAgICAgICAgICBcImNvbVwiICAgICAgICAgICAgIFwib1wiICAgICAgICAgICAgICBcblsxMV0gXCJkZXNlbnZvbHZpbWVudG9cIiBcImRlXCIgICAgICAgICAgICAgIFwic2lzdGVtYXNcIiAgICAgICAgXCJpbnRlbGlnZW50ZXNcIiAgICBcInBhcmFcIiAgICAgICAgICAgXG5bMTZdIFwib3RpbWl6YcOnw6NvXCIgICAgICBcImRvXCIgICAgICAgICAgICAgIFwiYXRlbmRpbWVudG9cIiAgICAgXCJlbVwiICAgICAgICAgICAgICBcIkNhbGxcIiAgICAgICAgICAgXG5bMjFdIFwiQ2VudGVyc1wiICAgICAgICAgXCJDb21vXCIgICAgICAgICAgICBcInBhcnRlXCIgICAgICAgICAgIFwiZGVcIiAgICAgICAgICAgICAgXCJzZXVcIiAgICAgICAgICAgIFxuWzI2XSBcIm1lc3RyYWRvXCIgICAgICAgIFwibmFcIiAgICAgICAgICAgICAgXCJVbml2ZXJzaWRhZGVcIiAgICBcImRlXCIgICAgICAgICAgICAgIFwiU8Ojb1wiICAgICAgICAgICAgXG5bMzFdIFwiUGF1bG9cIiAgICAgICAgICAgXCJjb25kdXpcIiAgICAgICAgICBcInBlc3F1aXNhXCIgICAgICAgIFwibmFcIiAgICAgICAgICAgICAgXCLDoXJlYVwiICAgICAgICAgICBcblszNl0gXCJkZVwiICAgICAgICAgICAgICBcIlNpc3RlbWFzXCIgICAgICAgIFwiZGVcIiAgICAgICAgICAgICAgXCJSZWNvbWVuZGHDp8Ojb1wiICAgXG5cbnRleHQyIDpcbiBbMV0gXCJDaWVudGlzdGFcIiAgICAgICAgXCJkZVwiICAgICAgICAgICAgICAgXCJEYWRvc1wiICAgICAgICAgICAgXCJlXCIgICAgICAgICAgICAgICBcbiBbNV0gXCJBbmFsaXN0YVwiICAgICAgICAgXCJEZXNlbnZvbHZlZG9yXCIgICAgXCJuYVwiICAgICAgICAgICAgICAgXCJHZW5vYVwiICAgICAgICAgICBcbiBbOV0gXCJQZXJmb3JtYW5jZVwiICAgICAgXCJhdHVhXCIgICAgICAgICAgICAgXCJjb21cIiAgICAgICAgICAgICAgXCJvXCIgICAgICAgICAgICAgICBcblsxM10gXCJkZXNlbnZvbHZpbWVudG9cIiAgXCJkZVwiICAgICAgICAgICAgICAgXCJzaXN0ZW1hc1wiICAgICAgICAgXCJpbnRlbGlnZW50ZXNcIiAgICBcblsxN10gXCJwYXJhXCIgICAgICAgICAgICAgXCJvdGltaXphw6fDo29cIiAgICAgICBcImRvXCIgICAgICAgICAgICAgICBcImF0ZW5kaW1lbnRvXCIgICAgIFxuWzIxXSBcInBhcmFcIiAgICAgICAgICAgICBcImVtcHJlc2FzXCIgICAgICAgICBcImRlXCIgICAgICAgICAgICAgICBcIlRlbGVjb211bmljYcOnw7Vlc1wiXG5bMjVdIFwiRXN0dWRhbnRlXCIgICAgICAgIFwiZGVcIiAgICAgICAgICAgICAgIFwiTWVzdHJhZG9cIiAgICAgICAgIFwicGVsYVwiICAgICAgICAgICAgXG5bMjldIFwiVW5pdmVyc2lkYWRlXCIgICAgIFwiZGVcIiAgICAgICAgICAgICAgIFwiU8Ojb1wiICAgICAgICAgICAgICBcIlBhdWxvXCIgICAgICAgICAgIFxuWzMzXSBcImNvbVwiICAgICAgICAgICAgICBcInBlc3F1aXNhXCIgICAgICAgICBcIm5hXCIgICAgICAgICAgICAgICBcIsOhcmVhXCIgICAgICAgICAgICBcblszN10gXCJkZVwiICAgICAgICAgICAgICAgXCJTaXN0ZW1hc1wiICAgICAgICAgXCJJbnRlbGlnZW50ZXNcIiAgICAgXCJhcGxpY2Fkb1wiICAgICAgICBcbls0MV0gXCJuYVwiICAgICAgICAgICAgICAgXCJkZXRlY8Onw6NvXCIgICAgICAgICBcImF1dG9tw6F0aWNhXCIgICAgICAgXCJkZVwiICAgICAgICAgICAgICBcbls0NV0gXCJmYWxoYXNcIiAgICAgICAgICAgXCJub1wiICAgICAgICAgICAgICAgXCJkZXNlbnZvbHZpbWVudG9cIiAgXCJkZVwiICAgICAgICAgICAgICBcbls0OV0gXCJzb2Z0d2FyZVwiICAgICAgICBcbiJ9 -->
+<pre><code>tokens from 2 documents.
 text1 :
- [1] &quot;Abordagens&quot;       &quot;manuais&quot;          &quot;trabalho&quot;         &quot;intensivo&quot;       
- [5] &quot;mineração&quot;        &quot;texto&quot;            &quot;vieram&quot;           &quot;tona&quot;            
- [9] &quot;metade&quot;           &quot;anos&quot;             &quot;avanços&quot;          &quot;tecnológicos&quot;    
-[13] &quot;possibilitaram&quot;   &quot;avanço&quot;           &quot;campo&quot;            &quot;durante&quot;         
-[17] &quot;década&quot;           &quot;passada&quot;          &quot;mineração&quot;        &quot;texto&quot;           
-[21] &quot;é&quot;                &quot;campo&quot;            &quot;interdisciplinar&quot; &quot;baseia&quot;          
-[25] &quot;recuperação&quot;      &quot;informações&quot;      &quot;extração&quot;         &quot;dados&quot;           
-[29] &quot;aprendizado&quot;      &quot;máquina&quot;          &quot;estatísticas&quot;     &quot;linguística&quot;     
-[33] &quot;computacional&quot;    &quot;Quanto&quot;           &quot;informações&quot;      &quot;estimativas&quot;     
-[37] &quot;comuns&quot;           &quot;afirmam&quot;          &quot;ser&quot;              &quot;acima&quot;           
-[41] &quot;armazenadas&quot;      &quot;forma&quot;            &quot;texto&quot;            &quot;acredita-se&quot;     
-[45] &quot;mineração&quot;        &quot;texto&quot;            &quot;possua&quot;           &quot;alto&quot;            
-[49] &quot;valor&quot;            &quot;comercial&quot;        &quot;potencial&quot;        &quot;interesse&quot;       
-[53] &quot;crescente&quot;        &quot;relacionado&quot;      &quot;mineração&quot;        &quot;multilíngue&quot;     
-[57] &quot;dados&quot;            &quot;capacidade&quot;       &quot;obter&quot;            &quot;informações&quot;     
-[61] &quot;através&quot;          &quot;línguas&quot;          &quot;agrupar&quot;          &quot;itens&quot;           
-[65] &quot;similares&quot;        &quot;diversas&quot;         &quot;fontes&quot;           &quot;linguísticas&quot;    
-[69] &quot;acordo&quot;           &quot;sentido&quot;         </code></pre>
+ [1] &quot;Cientista&quot;       &quot;de&quot;              &quot;Dados&quot;           &quot;na&quot;              &quot;Genoa&quot;          
+ [6] &quot;Performance&quot;     &quot;onde&quot;            &quot;atua&quot;            &quot;com&quot;             &quot;o&quot;              
+[11] &quot;desenvolvimento&quot; &quot;de&quot;              &quot;sistemas&quot;        &quot;inteligentes&quot;    &quot;para&quot;           
+[16] &quot;otimização&quot;      &quot;do&quot;              &quot;atendimento&quot;     &quot;em&quot;              &quot;Call&quot;           
+[21] &quot;Centers&quot;         &quot;Como&quot;            &quot;parte&quot;           &quot;de&quot;              &quot;seu&quot;            
+[26] &quot;mestrado&quot;        &quot;na&quot;              &quot;Universidade&quot;    &quot;de&quot;              &quot;São&quot;            
+[31] &quot;Paulo&quot;           &quot;conduz&quot;          &quot;pesquisa&quot;        &quot;na&quot;              &quot;área&quot;           
+[36] &quot;de&quot;              &quot;Sistemas&quot;        &quot;de&quot;              &quot;Recomendação&quot;   
+
+text2 :
+ [1] &quot;Cientista&quot;        &quot;de&quot;               &quot;Dados&quot;            &quot;e&quot;               
+ [5] &quot;Analista&quot;         &quot;Desenvolvedor&quot;    &quot;na&quot;               &quot;Genoa&quot;           
+ [9] &quot;Performance&quot;      &quot;atua&quot;             &quot;com&quot;              &quot;o&quot;               
+[13] &quot;desenvolvimento&quot;  &quot;de&quot;               &quot;sistemas&quot;         &quot;inteligentes&quot;    
+[17] &quot;para&quot;             &quot;otimização&quot;       &quot;do&quot;               &quot;atendimento&quot;     
+[21] &quot;para&quot;             &quot;empresas&quot;         &quot;de&quot;               &quot;Telecomunicações&quot;
+[25] &quot;Estudante&quot;        &quot;de&quot;               &quot;Mestrado&quot;         &quot;pela&quot;            
+[29] &quot;Universidade&quot;     &quot;de&quot;               &quot;São&quot;              &quot;Paulo&quot;           
+[33] &quot;com&quot;              &quot;pesquisa&quot;         &quot;na&quot;               &quot;área&quot;            
+[37] &quot;de&quot;               &quot;Sistemas&quot;         &quot;Inteligentes&quot;     &quot;aplicado&quot;        
+[41] &quot;na&quot;               &quot;detecção&quot;         &quot;automática&quot;       &quot;de&quot;              
+[45] &quot;falhas&quot;           &quot;no&quot;               &quot;desenvolvimento&quot;  &quot;de&quot;              
+[49] &quot;software&quot;        </code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -284,34 +286,65 @@ text1 :
 <pre class="r"><code>tok &lt;- tokens_remove(tok, stopwords(&quot;portuguese&quot;))
 tok</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoidG9rZW5zIGZyb20gMSBkb2N1bWVudC5cbnRleHQxIDpcbiBbMV0gXCJBYm9yZGFnZW5zXCIgICAgICAgXCJtYW51YWlzXCIgICAgICAgICAgXCJ0cmFiYWxob1wiICAgICAgICAgXCJpbnRlbnNpdm9cIiAgICAgICBcbiBbNV0gXCJtaW5lcmHDp8Ojb1wiICAgICAgICBcInRleHRvXCIgICAgICAgICAgICBcInZpZXJhbVwiICAgICAgICAgICBcInRvbmFcIiAgICAgICAgICAgIFxuIFs5XSBcIm1ldGFkZVwiICAgICAgICAgICBcImFub3NcIiAgICAgICAgICAgICBcImF2YW7Dp29zXCIgICAgICAgICAgXCJ0ZWNub2zDs2dpY29zXCIgICAgXG5bMTNdIFwicG9zc2liaWxpdGFyYW1cIiAgIFwiYXZhbsOnb1wiICAgICAgICAgICBcImNhbXBvXCIgICAgICAgICAgICBcImR1cmFudGVcIiAgICAgICAgIFxuWzE3XSBcImTDqWNhZGFcIiAgICAgICAgICAgXCJwYXNzYWRhXCIgICAgICAgICAgXCJtaW5lcmHDp8Ojb1wiICAgICAgICBcInRleHRvXCIgICAgICAgICAgIFxuWzIxXSBcIsOpXCIgICAgICAgICAgICAgICAgXCJjYW1wb1wiICAgICAgICAgICAgXCJpbnRlcmRpc2NpcGxpbmFyXCIgXCJiYXNlaWFcIiAgICAgICAgICBcblsyNV0gXCJyZWN1cGVyYcOnw6NvXCIgICAgICBcImluZm9ybWHDp8O1ZXNcIiAgICAgIFwiZXh0cmHDp8Ojb1wiICAgICAgICAgXCJkYWRvc1wiICAgICAgICAgICBcblsyOV0gXCJhcHJlbmRpemFkb1wiICAgICAgXCJtw6FxdWluYVwiICAgICAgICAgIFwiZXN0YXTDrXN0aWNhc1wiICAgICBcImxpbmd1w61zdGljYVwiICAgICBcblszM10gXCJjb21wdXRhY2lvbmFsXCIgICAgXCJRdWFudG9cIiAgICAgICAgICAgXCJpbmZvcm1hw6fDtWVzXCIgICAgICBcImVzdGltYXRpdmFzXCIgICAgIFxuWzM3XSBcImNvbXVuc1wiICAgICAgICAgICBcImFmaXJtYW1cIiAgICAgICAgICBcInNlclwiICAgICAgICAgICAgICBcImFjaW1hXCIgICAgICAgICAgIFxuWzQxXSBcImFybWF6ZW5hZGFzXCIgICAgICBcImZvcm1hXCIgICAgICAgICAgICBcInRleHRvXCIgICAgICAgICAgICBcImFjcmVkaXRhLXNlXCIgICAgIFxuWzQ1XSBcIm1pbmVyYcOnw6NvXCIgICAgICAgIFwidGV4dG9cIiAgICAgICAgICAgIFwicG9zc3VhXCIgICAgICAgICAgIFwiYWx0b1wiICAgICAgICAgICAgXG5bNDldIFwidmFsb3JcIiAgICAgICAgICAgIFwiY29tZXJjaWFsXCIgICAgICAgIFwicG90ZW5jaWFsXCIgICAgICAgIFwiaW50ZXJlc3NlXCIgICAgICAgXG5bNTNdIFwiY3Jlc2NlbnRlXCIgICAgICAgIFwicmVsYWNpb25hZG9cIiAgICAgIFwibWluZXJhw6fDo29cIiAgICAgICAgXCJtdWx0aWzDrW5ndWVcIiAgICAgXG5bNTddIFwiZGFkb3NcIiAgICAgICAgICAgIFwiY2FwYWNpZGFkZVwiICAgICAgIFwib2J0ZXJcIiAgICAgICAgICAgIFwiaW5mb3JtYcOnw7Vlc1wiICAgICBcbls2MV0gXCJhdHJhdsOpc1wiICAgICAgICAgIFwibMOtbmd1YXNcIiAgICAgICAgICBcImFncnVwYXJcIiAgICAgICAgICBcIml0ZW5zXCIgICAgICAgICAgIFxuWzY1XSBcInNpbWlsYXJlc1wiICAgICAgICBcImRpdmVyc2FzXCIgICAgICAgICBcImZvbnRlc1wiICAgICAgICAgICBcImxpbmd1w61zdGljYXNcIiAgICBcbls2OV0gXCJhY29yZG9cIiAgICAgICAgICAgXCJzZW50aWRvXCIgICAgICAgICBcbiJ9 -->
-<pre><code>tokens from 1 document.
+<!-- rnb-output-begin eyJkYXRhIjoidG9rZW5zIGZyb20gMiBkb2N1bWVudHMuXG50ZXh0MSA6XG4gWzFdIFwiQ2llbnRpc3RhXCIgICAgICAgXCJEYWRvc1wiICAgICAgICAgICBcIkdlbm9hXCIgICAgICAgICAgIFwiUGVyZm9ybWFuY2VcIiAgICAgXCJvbmRlXCIgICAgICAgICAgIFxuIFs2XSBcImF0dWFcIiAgICAgICAgICAgIFwiZGVzZW52b2x2aW1lbnRvXCIgXCJzaXN0ZW1hc1wiICAgICAgICBcImludGVsaWdlbnRlc1wiICAgIFwib3RpbWl6YcOnw6NvXCIgICAgIFxuWzExXSBcImF0ZW5kaW1lbnRvXCIgICAgIFwiQ2FsbFwiICAgICAgICAgICAgXCJDZW50ZXJzXCIgICAgICAgICBcInBhcnRlXCIgICAgICAgICAgIFwibWVzdHJhZG9cIiAgICAgICBcblsxNl0gXCJVbml2ZXJzaWRhZGVcIiAgICBcIlBhdWxvXCIgICAgICAgICAgIFwiY29uZHV6XCIgICAgICAgICAgXCJwZXNxdWlzYVwiICAgICAgICBcIsOhcmVhXCIgICAgICAgICAgIFxuWzIxXSBcIlNpc3RlbWFzXCIgICAgICAgIFwiUmVjb21lbmRhw6fDo29cIiAgIFxuXG50ZXh0MiA6XG4gWzFdIFwiQ2llbnRpc3RhXCIgICAgICAgIFwiRGFkb3NcIiAgICAgICAgICAgIFwiQW5hbGlzdGFcIiAgICAgICAgIFwiRGVzZW52b2x2ZWRvclwiICAgXG4gWzVdIFwiR2Vub2FcIiAgICAgICAgICAgIFwiUGVyZm9ybWFuY2VcIiAgICAgIFwiYXR1YVwiICAgICAgICAgICAgIFwiZGVzZW52b2x2aW1lbnRvXCIgXG4gWzldIFwic2lzdGVtYXNcIiAgICAgICAgIFwiaW50ZWxpZ2VudGVzXCIgICAgIFwib3RpbWl6YcOnw6NvXCIgICAgICAgXCJhdGVuZGltZW50b1wiICAgICBcblsxM10gXCJlbXByZXNhc1wiICAgICAgICAgXCJUZWxlY29tdW5pY2HDp8O1ZXNcIiBcIkVzdHVkYW50ZVwiICAgICAgICBcIk1lc3RyYWRvXCIgICAgICAgIFxuWzE3XSBcIlVuaXZlcnNpZGFkZVwiICAgICBcIlBhdWxvXCIgICAgICAgICAgICBcInBlc3F1aXNhXCIgICAgICAgICBcIsOhcmVhXCIgICAgICAgICAgICBcblsyMV0gXCJTaXN0ZW1hc1wiICAgICAgICAgXCJJbnRlbGlnZW50ZXNcIiAgICAgXCJhcGxpY2Fkb1wiICAgICAgICAgXCJkZXRlY8Onw6NvXCIgICAgICAgIFxuWzI1XSBcImF1dG9tw6F0aWNhXCIgICAgICAgXCJmYWxoYXNcIiAgICAgICAgICAgXCJkZXNlbnZvbHZpbWVudG9cIiAgXCJzb2Z0d2FyZVwiICAgICAgICBcbiJ9 -->
+<pre><code>tokens from 2 documents.
 text1 :
- [1] &quot;Abordagens&quot;       &quot;manuais&quot;          &quot;trabalho&quot;         &quot;intensivo&quot;       
- [5] &quot;mineração&quot;        &quot;texto&quot;            &quot;vieram&quot;           &quot;tona&quot;            
- [9] &quot;metade&quot;           &quot;anos&quot;             &quot;avanços&quot;          &quot;tecnológicos&quot;    
-[13] &quot;possibilitaram&quot;   &quot;avanço&quot;           &quot;campo&quot;            &quot;durante&quot;         
-[17] &quot;década&quot;           &quot;passada&quot;          &quot;mineração&quot;        &quot;texto&quot;           
-[21] &quot;é&quot;                &quot;campo&quot;            &quot;interdisciplinar&quot; &quot;baseia&quot;          
-[25] &quot;recuperação&quot;      &quot;informações&quot;      &quot;extração&quot;         &quot;dados&quot;           
-[29] &quot;aprendizado&quot;      &quot;máquina&quot;          &quot;estatísticas&quot;     &quot;linguística&quot;     
-[33] &quot;computacional&quot;    &quot;Quanto&quot;           &quot;informações&quot;      &quot;estimativas&quot;     
-[37] &quot;comuns&quot;           &quot;afirmam&quot;          &quot;ser&quot;              &quot;acima&quot;           
-[41] &quot;armazenadas&quot;      &quot;forma&quot;            &quot;texto&quot;            &quot;acredita-se&quot;     
-[45] &quot;mineração&quot;        &quot;texto&quot;            &quot;possua&quot;           &quot;alto&quot;            
-[49] &quot;valor&quot;            &quot;comercial&quot;        &quot;potencial&quot;        &quot;interesse&quot;       
-[53] &quot;crescente&quot;        &quot;relacionado&quot;      &quot;mineração&quot;        &quot;multilíngue&quot;     
-[57] &quot;dados&quot;            &quot;capacidade&quot;       &quot;obter&quot;            &quot;informações&quot;     
-[61] &quot;através&quot;          &quot;línguas&quot;          &quot;agrupar&quot;          &quot;itens&quot;           
-[65] &quot;similares&quot;        &quot;diversas&quot;         &quot;fontes&quot;           &quot;linguísticas&quot;    
-[69] &quot;acordo&quot;           &quot;sentido&quot;         </code></pre>
+ [1] &quot;Cientista&quot;       &quot;Dados&quot;           &quot;Genoa&quot;           &quot;Performance&quot;     &quot;onde&quot;           
+ [6] &quot;atua&quot;            &quot;desenvolvimento&quot; &quot;sistemas&quot;        &quot;inteligentes&quot;    &quot;otimização&quot;     
+[11] &quot;atendimento&quot;     &quot;Call&quot;            &quot;Centers&quot;         &quot;parte&quot;           &quot;mestrado&quot;       
+[16] &quot;Universidade&quot;    &quot;Paulo&quot;           &quot;conduz&quot;          &quot;pesquisa&quot;        &quot;área&quot;           
+[21] &quot;Sistemas&quot;        &quot;Recomendação&quot;   
+
+text2 :
+ [1] &quot;Cientista&quot;        &quot;Dados&quot;            &quot;Analista&quot;         &quot;Desenvolvedor&quot;   
+ [5] &quot;Genoa&quot;            &quot;Performance&quot;      &quot;atua&quot;             &quot;desenvolvimento&quot; 
+ [9] &quot;sistemas&quot;         &quot;inteligentes&quot;     &quot;otimização&quot;       &quot;atendimento&quot;     
+[13] &quot;empresas&quot;         &quot;Telecomunicações&quot; &quot;Estudante&quot;        &quot;Mestrado&quot;        
+[17] &quot;Universidade&quot;     &quot;Paulo&quot;            &quot;pesquisa&quot;         &quot;área&quot;            
+[21] &quot;Sistemas&quot;         &quot;Inteligentes&quot;     &quot;aplicado&quot;         &quot;detecção&quot;        
+[25] &quot;automática&quot;       &quot;falhas&quot;           &quot;desenvolvimento&quot;  &quot;software&quot;        </code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+</div>
+<div id="bag-of-words" class="section level2">
+<h2>Bag of Words</h2>
 <!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYm93IDwtIGRmbSh0b2spXG5oZWFkKHQoYm93KSwgMjApXG5gYGAifQ== -->
+<pre class="r"><code>bow &lt;- dfm(tok)
+head(t(bow), 20)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRG9jdW1lbnQtZmVhdHVyZSBtYXRyaXggb2Y6IDIwIGRvY3VtZW50cywgMiBmZWF0dXJlcyAoMTIuNSUgc3BhcnNlKS5cbjIwIHggMiBzcGFyc2UgTWF0cml4IG9mIGNsYXNzIFwiZGZtU3BhcnNlXCJcbiAgICAgICAgICAgICAgICAgZG9jc1xuZmVhdHVyZXMgICAgICAgICAgdGV4dDEgdGV4dDJcbiAgY2llbnRpc3RhICAgICAgICAgICAxICAgICAxXG4gIGRhZG9zICAgICAgICAgICAgICAgMSAgICAgMVxuICBnZW5vYSAgICAgICAgICAgICAgIDEgICAgIDFcbiAgcGVyZm9ybWFuY2UgICAgICAgICAxICAgICAxXG4gIG9uZGUgICAgICAgICAgICAgICAgMSAgICAgMFxuICBhdHVhICAgICAgICAgICAgICAgIDEgICAgIDFcbiAgZGVzZW52b2x2aW1lbnRvICAgICAxICAgICAyXG4gIHNpc3RlbWFzICAgICAgICAgICAgMiAgICAgMlxuICBpbnRlbGlnZW50ZXMgICAgICAgIDEgICAgIDJcbiAgb3RpbWl6YcOnw6NvICAgICAgICAgIDEgICAgIDFcbiAgYXRlbmRpbWVudG8gICAgICAgICAxICAgICAxXG4gIGNhbGwgICAgICAgICAgICAgICAgMSAgICAgMFxuICBjZW50ZXJzICAgICAgICAgICAgIDEgICAgIDBcbiAgcGFydGUgICAgICAgICAgICAgICAxICAgICAwXG4gIG1lc3RyYWRvICAgICAgICAgICAgMSAgICAgMVxuICB1bml2ZXJzaWRhZGUgICAgICAgIDEgICAgIDFcbiAgcGF1bG8gICAgICAgICAgICAgICAxICAgICAxXG4gIGNvbmR1eiAgICAgICAgICAgICAgMSAgICAgMFxuICBwZXNxdWlzYSAgICAgICAgICAgIDEgICAgIDFcbiAgw6FyZWEgICAgICAgICAgICAgICAgMSAgICAgMVxuIn0= -->
+<pre><code>Document-feature matrix of: 20 documents, 2 features (12.5% sparse).
+20 x 2 sparse Matrix of class &quot;dfmSparse&quot;
+                 docs
+features          text1 text2
+  cientista           1     1
+  dados               1     1
+  genoa               1     1
+  performance         1     1
+  onde                1     0
+  atua                1     1
+  desenvolvimento     1     2
+  sistemas            2     2
+  inteligentes        1     2
+  otimização          1     1
+  atendimento         1     1
+  call                1     0
+  centers             1     0
+  parte               1     0
+  mestrado            1     1
+  universidade        1     1
+  paulo               1     1
+  conduz              1     0
+  pesquisa            1     1
+  área                1     1</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUHLDqS1wcm9jZXNzYW1lbnRvIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgpgYGB7ciwgd2FybmluZz1GQUxTRX0KaWYoIXJlcXVpcmUocXVhbnRlZGEpKSBpbnN0YWxsLnBhY2thZ2VzKCJxdWFudGVkYSIpCmBgYAoKIyMgVGV4dG8gT3JpZ2luYWwKCmBgYHtyfQojIGh0dHBzOi8vcHQud2lraXBlZGlhLm9yZy93aWtpL01pbmVyYSVDMyVBNyVDMyVBM29fZGVfdGV4dG8KdGV4dG8gPC0gIkFib3JkYWdlbnMgbWFudWFpcyBkZSB0cmFiYWxobyBpbnRlbnNpdm8gZGEgbWluZXJhw6fDo28gZG8gdGV4dG8gdmllcmFtIMOgIHRvbmEgbmEgbWV0YWRlIGRvcyBhbm9zIDgwLCBtYXMgb3MgYXZhbsOnb3MgdGVjbm9sw7NnaWNvcyBwb3NzaWJpbGl0YXJhbSBvIGF2YW7Dp28gZG8gY2FtcG8gZHVyYW50ZSBhIGTDqWNhZGEgcGFzc2FkYS4gQSBtaW5lcmHDp8OjbyBkbyB0ZXh0byDDqSB1bSBjYW1wbyBpbnRlcmRpc2NpcGxpbmFyIHF1ZSBzZSBiYXNlaWEgbmEgcmVjdXBlcmHDp8OjbyBkZSBpbmZvcm1hw6fDtWVzLCBleHRyYcOnw6NvIGRlIGRhZG9zLCBhcHJlbmRpemFkbyBkZSBtw6FxdWluYSwgZXN0YXTDrXN0aWNhcyBlIGxpbmd1w61zdGljYSBjb21wdXRhY2lvbmFsLiBRdWFudG8gbWFpcyBpbmZvcm1hw6fDtWVzIChhcyBlc3RpbWF0aXZhcyBjb211bnMgYWZpcm1hbSBzZXIgYWNpbWEgZGUgODAlKSBzw6NvIGFybWF6ZW5hZGFzIGVtIGZvcm1hIGRlIHRleHRvLCBhY3JlZGl0YS1zZSBxdWUgYSBtaW5lcmHDp8OjbyBkbyB0ZXh0byBwb3NzdWEgdW0gYWx0byB2YWxvciBjb21lcmNpYWwgcG90ZW5jaWFsLiBPIGludGVyZXNzZSBjcmVzY2VudGUgZXN0w6EgcmVsYWNpb25hZG8gYSBtaW5lcmHDp8OjbyBtdWx0aWzDrW5ndWUgZGUgZGFkb3M6IGEgY2FwYWNpZGFkZSBkZSBvYnRlciBpbmZvcm1hw6fDtWVzIGF0cmF2w6lzIGRlIGzDrW5ndWFzIGUgYWdydXBhciBpdGVucyBzaW1pbGFyZXMgZGUgZGl2ZXJzYXMgZm9udGVzIGxpbmd1w61zdGljYXMgZGUgYWNvcmRvIGNvbSBvIHNldSBzZW50aWRvLiIKdGV4dG8KYGBgCgojIyBUb2tlbml6YcOnw6NvCmBgYHtyfQp0b2sgPC0gdG9rZW5zKHRleHRvKQp0b2sKYGBgCiMjIFJlbW92ZXIgcG9udHVhw6fDo28sIG7Dum1lcm9zIGUgc8OtbWJvbG9zCmBgYHtyfQp0b2sgPC0gdG9rZW5zKHRvaywgcmVtb3ZlX251bWJlcnMgPSBUUlVFLCByZW1vdmVfcHVuY3QgPSBUUlVFLAogICAgICAgcmVtb3ZlX3N5bWJvbHMgPSBUUlVFKQp0b2sKYGBgCgojIyBSZW1vdmVyIHN0b3B3b3JkcwpgYGB7cn0KdG9rIDwtIHRva2Vuc19yZW1vdmUodG9rLCBzdG9wd29yZHMoInBvcnR1Z3Vlc2UiKSkKdG9rCmBgYAoKCg==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUHLDqS1wcm9jZXNzYW1lbnRvIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKYXV0aG9yOiAiQW5kcmVpIE1hcnRpbnMgZSBDaGFybGVzIE1lbmRlcyIKZGF0ZTogIjA0IGRlIE5vdmVtYnJvIGRlIDIwMTciCi0tLQoKYGBge3IsIG1lc3NhZ2U9RkFMU0V9CmlmKCFyZXF1aXJlKHF1YW50ZWRhKSkgaW5zdGFsbC5wYWNrYWdlcygicXVhbnRlZGEiKQpgYGAKCiMjIFRleHRvIE9yaWdpbmFsCgpgYGB7cn0KYW5kcmVpIDwtICJDaWVudGlzdGEgZGUgRGFkb3MgbmEgR2Vub2EgUGVyZm9ybWFuY2UsIG9uZGUgYXR1YSBjb20gbyBkZXNlbnZvbHZpbWVudG8gZGUgc2lzdGVtYXMgaW50ZWxpZ2VudGVzIHBhcmEgb3RpbWl6YcOnw6NvIGRvIGF0ZW5kaW1lbnRvIGVtIENhbGwgQ2VudGVycy4gQ29tbyBwYXJ0ZSBkZSBzZXUgbWVzdHJhZG8gbmEgVW5pdmVyc2lkYWRlIGRlIFPDo28gUGF1bG8gY29uZHV6IHBlc3F1aXNhIG5hIMOhcmVhIGRlIFNpc3RlbWFzIGRlIFJlY29tZW5kYcOnw6NvLiIKCmNoYXJsZXMgPC0gIkNpZW50aXN0YSBkZSBEYWRvcyBlIEFuYWxpc3RhIERlc2Vudm9sdmVkb3IgbmEgR2Vub2EgUGVyZm9ybWFuY2UsIGF0dWEgY29tIG8gZGVzZW52b2x2aW1lbnRvIGRlIHNpc3RlbWFzIGludGVsaWdlbnRlcyBwYXJhIG90aW1pemHDp8OjbyBkbyBhdGVuZGltZW50byBwYXJhIGVtcHJlc2FzIGRlIFRlbGVjb211bmljYcOnw7Vlcy4gRXN0dWRhbnRlIGRlIE1lc3RyYWRvIHBlbGEgVW5pdmVyc2lkYWRlIGRlIFPDo28gUGF1bG8sIGNvbSBwZXNxdWlzYSBuYSDDoXJlYSBkZSBTaXN0ZW1hcyBJbnRlbGlnZW50ZXMgYXBsaWNhZG8gbmEgZGV0ZWPDp8OjbyBhdXRvbcOhdGljYSBkZSBmYWxoYXMgbm8gZGVzZW52b2x2aW1lbnRvIGRlIHNvZnR3YXJlLiIKCgpjb3JwdXMgPC0gYyhhbmRyZWksIGNoYXJsZXMpCmNvcnB1cwpgYGAKCiMjIFRva2VuaXphw6fDo28KYGBge3J9CnRvayA8LSB0b2tlbnMoY29ycHVzKQp0b2sKYGBgCiMjIFJlbW92ZXIgcG9udHVhw6fDo28sIG7Dum1lcm9zIGUgc8OtbWJvbG9zCmBgYHtyfQp0b2sgPC0gdG9rZW5zKHRvaywgcmVtb3ZlX251bWJlcnMgPSBUUlVFLCByZW1vdmVfcHVuY3QgPSBUUlVFLAogICAgICAgcmVtb3ZlX3N5bWJvbHMgPSBUUlVFKQp0b2sKYGBgCgojIyBSZW1vdmVyIHN0b3B3b3JkcwpgYGB7cn0KdG9rIDwtIHRva2Vuc19yZW1vdmUodG9rLCBzdG9wd29yZHMoInBvcnR1Z3Vlc2UiKSkKdG9rCmBgYAoKIyMgQmFnIG9mIFdvcmRzCmBgYHtyfQpib3cgPC0gZGZtKHRvaykKaGVhZCh0KGJvdyksIDIwKQpgYGA=</div>
 
 
 
