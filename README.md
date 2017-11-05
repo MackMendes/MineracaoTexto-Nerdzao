@@ -16,6 +16,8 @@ Palestra no [evento Nerdzão](https://www.meetup.com/pt-BR/Nerdzao/events/242381
 - Ponderação TF-IDF
 - N-grama (Bigrama)
 
+#### Obs.: 
+O notebook R foi desenvolvido no Encoding UTF-8 (Linux).
 
 ## Apresentação Slide
 
