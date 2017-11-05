@@ -31,13 +31,13 @@ if(!require(RDRPOSTagger)) install.packages("RDRPOSTagger")  # Mineração de Te
 
 ```{r}
 ## Nome do seu aplicativo (o mesmo criado na etapa anterior)
-nomeAplicativo <- "nerdzao" 
+nomeAplicativo <- "nome_do_aplicativo" # <- altere aqui
 
 ## Consumer Key (API Key)
-chaveAPI <- "29lJMLodwnkMNO6guU435B5K1"
+chaveAPI <- "chave_do_aplicativo" # <- altere aqui
 
 ## Consumer Secret (API Secret)
-chaveSecreta <- "6IIjtDyaFftDZc6E58l7mZojEmTJWnIQM2cdrA62ICFX6ZfRBm"
+chaveSecreta <- "chave_secreta_do_aplicativo" # <- altere aqui
 
 ## Criar token para o app
 twitter_token <- create_token(app = nomeAplicativo, 
@@ -57,7 +57,7 @@ Para isso, vamos:
 5) Salvar dados para uso posterior
 
 ```{r, message=FALSE}
-# 0) Carregar dados para evitar consulta ao Twitter
+# 0) Carregar dados para evitar consulta ao Twitter (Extração feita no dia 03/11/2017)
 load("tweets_clubes.RData")
 
 # 1) Definir a lista de clubes
@@ -65,6 +65,7 @@ clubes <- c("@Corinthians", "@Palmeiras", "@SantosFC", "@SaoPauloFC")
 
 # 2) Fazer a requisição à Search API do Twitter
 # Extrai 200 tweets sobre cada clube especificado, totalizando 800 tweets
+# * Caso queira extrair os tweets, descomente a linha 69 abaixo
 # tweets <- lapply(clubes, search_tweets, n = 200, token = twitter_token)
 
 # 3) Consolidar as requisições em uma única tabela
