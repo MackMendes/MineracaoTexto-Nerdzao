@@ -1,4 +1,4 @@
-# Introdução à Mineracao de Texto
+# Introdução à Mineração de Texto
 Palestra no [evento Nerdzão](https://www.meetup.com/pt-BR/Nerdzao/events/242381283/) na IBM Brasil, falando "Introdução à Mineração de Texto".
 
 ![Context Menu](art/cards.png)
