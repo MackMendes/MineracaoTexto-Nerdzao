@@ -411,6 +411,39 @@ plot_clubes_tf_idf_bigrama %>%
   coord_flip()
 ```
 
+Visualização com nuvem de palavras das 100 bigramas com maior tf-idf de cada clube: 
+
+### Corinthians
+```{r, warning=FALSE}
+top_sccp_bigramas_tf_idf <- bigramas_tweets_texto_clubes_tf_idf %>%
+  filter(clube == "Corinthians")
+  
+wordcloud(top_sccp_bigramas_tf_idf$bigrama, top_sccp_bigramas_tf_idf$tf_idf, colors = brewer.pal(8, "Dark2"), max.words= 100)
+```
+
+### Palmeiras
+```{r, warning=FALSE}
+top_sep_bigramas_tf_idf <- bigramas_tweets_texto_clubes_tf_idf %>%
+  filter(clube == "Palmeiras")
+  
+wordcloud(top_sep_bigramas_tf_idf$bigrama, top_sep_bigramas_tf_idf$tf_idf, colors = brewer.pal(8, "Dark2"), max.words= 100)
+```
+### Santos
+```{r, warning=FALSE}
+top_sfc_bigramas_tf_idf <- bigramas_tweets_texto_clubes_tf_idf %>%
+  filter(clube == "Santos")
+  
+wordcloud(top_sfc_bigramas_tf_idf$bigrama, top_sfc_bigramas_tf_idf$tf_idf, colors = brewer.pal(8, "Dark2"), max.words= 100)
+```
+
+### São Paulo
+```{r, warning=FALSE}
+top_spfc_bigramas_tf_idf <- bigramas_tweets_texto_clubes_tf_idf %>%
+  filter(clube == "São Paulo")
+  
+wordcloud(top_spfc_bigramas_tf_idf$bigrama, top_spfc_bigramas_tf_idf$tf_idf, colors = brewer.pal(8, "Dark2"), max.words= 100)
+```
+
 
 ## Referências
 
