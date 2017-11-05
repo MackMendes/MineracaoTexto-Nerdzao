@@ -19,7 +19,7 @@ Palestra no [evento Nerdzão](https://www.meetup.com/pt-BR/Nerdzao/events/242381
 
 ## Apresentação Slide
 
-- [Introdução à Mineração de Textos - By Andrei Martins e Charles Mendes]
+- [Introdução à Mineração de Textos - By Andrei Martins e Charles Mendes](https://pt.slideshare.net/secret/3dFi0OvqVzqDLF)
 
 ## Referências
 
